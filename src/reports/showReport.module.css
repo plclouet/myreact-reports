@@ -1,0 +1,17 @@
+* {
+    box-sizing: border-box;
+  }
+
+  .form_color{
+      background-color: #0a3d62;
+  }
+
+ 
+
+  .titre_cr{
+    font-weight: bold;
+  }
+
+  .text_cr{
+    font-family: arial, sans-serif;
+  }
