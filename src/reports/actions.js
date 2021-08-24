@@ -40,6 +40,8 @@ export const retrieveReports = () => async (dispatch) => {
       type: RETRIEVE_REPORTS,
       payload: res.data,
     });
+
+    return Promise.resolve(res.data);
   } catch (err) {
     console.log(err);
   }

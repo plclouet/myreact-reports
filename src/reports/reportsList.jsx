@@ -17,7 +17,11 @@ class ReportsList extends Component {
   }
 
   componentDidMount() {
-    this.props.retrieveReports();
+    this.props.retrieveReports().then((prevReports) => {
+      this.setState(() => ({
+        reports:prevReports,
+      }));
+    });
   }
 
   removeReport = (id) => {
