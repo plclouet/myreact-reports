@@ -91,10 +91,14 @@ getPrint = () => {
 
 
     return (
+      <div className="container">
       <div className="list row">
         <div className="col-md-6">
           <h4>Liste des protocoles à imprimer</h4>
-          <SearchBar updateSearchReports={ this.updateSearchReports }/>
+
+          <div className={styles.no_printable}>
+            <SearchBar updateSearchReports={ this.updateSearchReports }/>
+          </div>
           <div className={styles.no_printable}>
             <Link to="/">
               <button className="btn btn-light">Accueil</button>
@@ -135,6 +139,7 @@ getPrint = () => {
             </tbody>
           </table>
         </div>
+      </div>
       </div>
     );
   }
