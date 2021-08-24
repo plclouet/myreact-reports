@@ -75,7 +75,7 @@ const sortedReports = reports.slice().sort((a, b) => b.rdvDate < a.rdvDate ? 1: 
     return (
       <div className="container list row">
         
-        <div className="col-md-12 table-responsive-sm">
+        <div className="col-12">
           <h4 className="py-3" align="center">Liste des comptes rendus</h4>
           
           <div>
