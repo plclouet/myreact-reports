@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 
 
-const CardListReport = ({sortedReport, borderColor = '#009688'}) => {
+const CardListReport = ({sortedReport, deleteSweetReport, borderColor = '#009688'}) => {
 
  
   const [color, setColor] = useState();
@@ -38,7 +38,7 @@ const CardListReport = ({sortedReport, borderColor = '#009688'}) => {
               <h5 class="card-title">{sortedReport.nom} {sortedReport.prenom}</h5>
               <p class="card-text">{sortedReport.titre}</p>
               <div align="center">
-                        <button className="btn btn-danger btn-sm mx-1" onClick={() =>{this.deleteSweetReport(sortedReport.id)}}>
+                        <button className="btn btn-danger btn-sm mx-1" onClick={() =>{deleteSweetReport(sortedReport.id)}}>
                           Delete
                         </button>
                         <Link to={`/edit-report/${sortedReport.id}`}>

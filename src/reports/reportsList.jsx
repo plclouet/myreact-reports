@@ -11,8 +11,11 @@ import CardListReport from "./cardListReport";
 
 
 class ReportsList extends Component {
- 
-
+  constructor(props) {
+    super(props);
+  this.deleteSweetReport = this.deleteSweetReport.bind(this);
+  }
+  
   componentDidMount() {
     this.props.retrieveReports();
    
@@ -103,7 +106,7 @@ fireSweetAlert = (id) => {
       
         {sortedReports &&
                 sortedReports.map(sortedReport => (
-           <CardListReport key={sortedReport.id} sortedReport={sortedReport}/>
+           <CardListReport key={sortedReport.id} sortedReport={sortedReport} deleteSweetReport={this.deleteSweetReport}/>
            
           ))}
       
