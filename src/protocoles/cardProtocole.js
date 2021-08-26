@@ -64,7 +64,7 @@ document.execCommand('copy');
   
     <div className="col s12 m6 l4 py-2" onMouseEnter={showBorder} onMouseLeave={hideBorder}>
       <div className="card"  style={{ borderColor: color }}>
-        <div >
+        <div className={styles.pointer}>
               <div className="d-flex justify-content-between card-titre" >
               
               <span>{protocole.protocoleTitre}</span><FontAwesomeIcon icon={faCopy} />
