@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 //import { useHistory } from 'react-router-dom';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClipboard } from "@fortawesome/free-solid-svg-icons";
+import { faCopy } from "@fortawesome/free-regular-svg-icons";
 
 import styles from "./cardModel.module.css";
 
@@ -67,12 +67,12 @@ document.execCommand('copy');
   return (
   
     <div className="col s12 m6 l4 py-2" onMouseEnter={showBorder} onMouseLeave={hideBorder}>
-      <div className="card"  style={{ borderColor: color }}>
-        <div >
+      <div className="card"  style={{ borderColor: color }} >
+        <div className={styles.pointer}>
               
                 <div className="d-flex justify-content-between card-titre" >
               
-                  <span>{model.modelTitre}</span><FontAwesomeIcon icon={faClipboard} />
+                  <span>{model.modelTitre}</span><FontAwesomeIcon icon={faCopy} />
                   
                 </div>
               

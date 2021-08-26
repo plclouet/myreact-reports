@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 //import { useHistory } from 'react-router-dom';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClipboard } from "@fortawesome/free-solid-svg-icons";
+import { faCopy } from "@fortawesome/free-regular-svg-icons";
 
 import styles from "./cardProtocole.module.css";
 
@@ -67,7 +67,7 @@ document.execCommand('copy');
         <div >
               <div className="d-flex justify-content-between card-titre" >
               
-              <span>{protocole.protocoleTitre}</span><FontAwesomeIcon icon={faClipboard} />
+              <span>{protocole.protocoleTitre}</span><FontAwesomeIcon icon={faCopy} />
               
             </div>
               

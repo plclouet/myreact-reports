@@ -184,7 +184,7 @@ class AddReport extends Component {
             <label htmlFor="indication">Indication</label>
             <textarea
               // type="textarea"
-              rows={10}
+              rows={2}
               cols={50}
               className="form-control"
               id="indication"
@@ -198,7 +198,7 @@ class AddReport extends Component {
           <div className="form-group">
             <label htmlFor="protocole">Protocole</label>
             <textarea
-              rows={10}
+              rows={2}
               cols={50}
               className="form-control"
               id="protocole"

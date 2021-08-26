@@ -15,7 +15,6 @@ class ReportsList extends Component {
     super(props);
   this.deleteSweetReport = this.deleteSweetReport.bind(this);
   }
-  
   componentDidMount() {
     this.props.retrieveReports();
    

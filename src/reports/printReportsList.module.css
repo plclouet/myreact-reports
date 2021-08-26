@@ -18,6 +18,9 @@
   .th_big {
     width: 150px;
   }
+  .th_medium {
+    width: 100px;;
+  }
 
   .th_vbig {
     width: 500px;
@@ -45,11 +48,18 @@
     display: none
   } */
 
-  @media print {
+ /*  @media print {
     .no_printable {
       display: none;
      
     }
       
-    }
-  
+    } */
+
+    @media print {
+      .no_printable {
+        display: none;
+       
+      }
+        
+      }

@@ -92,7 +92,7 @@ getPrint = () => {
 
     return (
       <div className="container">
-      <div className="list row">
+      {/* <div className="list row"> */}
         <div className="col-md-6">
           <h4>Liste des protocoles</h4>
           <div className={styles.no_printable}>
@@ -110,10 +110,11 @@ getPrint = () => {
               style={{display: this.state.isChecked ? 'null' : 'none'}}
           */}
           <table id="printTable" className={`${styles.exemple} table table-sm table-hover`}>
+          
             <thead>
               <tr>
-                <th>Nom</th>
-                <th>Prenom</th>
+                <th className={styles.th_big}>Nom</th>
+                <th className={styles.th_medium}>Prenom</th>
                 <th className={styles.th_big}>Titre</th>
                 <th className={styles.th_vbig}>Protocole</th>
                 <th className={styles.no_printable}>Select</th>
@@ -124,14 +125,14 @@ getPrint = () => {
             
               {reports &&
                 reports.map(
-                  ({ id, nom, prenom, titre, protocole }, i) => (
+                  ({ nom, prenom, titre, protocole }, i) => (
                     <tr key={i} >
                       <td>{nom}</td>
                       <td>{prenom}</td>
                       <td>{titre}</td>
                       <td>{protocole}</td>
-                      <td><input type="checkbox" id="myCheck" defaultChecked={this.state.isChecked}
-                      onChange={this.toggleChange} className={styles.no_printable}/></td>
+                      <td className={styles.no_printable}><input type="checkbox" id="myCheck" defaultChecked={this.state.isChecked}
+                      onChange={this.toggleChange} /></td>
                      
                     </tr>
                   )
@@ -140,7 +141,7 @@ getPrint = () => {
           </table>
         </div>
       </div>
-      </div>
+      // </div>
     );
   }
 }

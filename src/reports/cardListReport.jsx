@@ -32,11 +32,11 @@ const CardListReport = ({sortedReport, deleteSweetReport, borderColor = '#009688
     // <div className="row-4">
     // <div className="col-md-4" onMouseEnter={showBorder} onMouseLeave={hideBorder}>
     <div className="col-12 col-lg-4">
-       <div class="card" style={{ borderColor: color }} onMouseEnter={showBorder} onMouseLeave={hideBorder}>
+       <div className="card" style={{ borderColor: color }} onMouseEnter={showBorder} onMouseLeave={hideBorder}>
             {/* <img class="card-img-top" src="..." alt="Card image cap"> */}
-            <div class="card-body">
-              <h5 class="card-title">{sortedReport.nom} {sortedReport.prenom}</h5>
-              <p class="card-text">{sortedReport.titre}</p>
+            <div className="card-body">
+              <h5 className="card-title">{sortedReport.nom} {sortedReport.prenom}</h5>
+              <p className="card-text">{sortedReport.titre} {sortedReport.rdvDate.slice(0,16)}</p>
               <div align="center">
                         <button className="btn btn-danger btn-sm mx-1" onClick={() =>{deleteSweetReport(sortedReport.id)}}>
                           Delete
