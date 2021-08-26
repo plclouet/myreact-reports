@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Formik } from 'formik';
-import axios from 'axios';
+//import axios from 'axios';
 //import ReportsService from "./reportsService";
 
 
@@ -9,19 +9,21 @@ export default class SearchBar extends Component {
   submit = (values, actions) => {
     const query = '?' + Object.keys(values).map( k => `${ k }=${ values[k]}&`).join('');
     console.log(query)
+
+    this.props.filterSearchReports(query)
     //axios.get(`https://frozen-dawn-43758.herokuapp.com/ordonnances`+ query)
-   axios.get('http://localhost:1337/reports' + query)
+  // axios.get('http://localhost:1337/reports' + query)
     //ReportsService.updateSearch(query)
     //apiMovie.get('/search/movie' + query)
-            .then( response => response.data )
-        
-            .then( reportsListUpdate => {
+       //     .then( response => response.data )
+     actions.setSubmitting(false);
+          //   .then( reportsListFilter => {
             //   const movies = moviesApi.map(apiMovieMap)
-                console.log(reportsListUpdate)
-               this.props.updateSearchReports(reportsListUpdate);
-               actions.setSubmitting(false);
-             })
-            .catch( err => console.log(err));
+             //   console.log(reportsListFilter)
+             //  this.props.filterSearchReports(reportsListFilter);
+           //    actions.setSubmitting(false);
+           //  }) 
+          //  .catch( err => console.log(err));
         
   }
   

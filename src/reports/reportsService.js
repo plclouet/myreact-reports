@@ -9,6 +9,10 @@ class ReportsService {
     return http.get(`/reports/${id}`);
   }
 
+  getFilter(query) {
+    return http.get("/reports" + query)
+  }
+
   create(data) {
     return http.post("/reports", data);
   }

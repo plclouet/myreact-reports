@@ -3,6 +3,7 @@ import {
   RETRIEVE_REPORTS,
   UPDATE_REPORT,
   DELETE_REPORT,
+  FILTER_REPORTS,
 } from "./actionTypes";
 
 import ReportsService from "./reportsService";
@@ -38,6 +39,21 @@ export const retrieveReports = () => async (dispatch) => {
 
     dispatch({
       type: RETRIEVE_REPORTS,
+      payload: res.data,
+    });
+
+    return Promise.resolve(res.data);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const filterReports = (query) => async (dispatch) => {
+  try {
+    const res = await ReportsService.getFilter(query);
+
+    dispatch({
+      type: FILTER_REPORTS,
       payload: res.data,
     });
 
