@@ -32,7 +32,7 @@ const CardListReport = ({sortedReport, borderColor = '#009688'}) => {
     // <div className="row-4">
     // <div className="col-md-4" onMouseEnter={showBorder} onMouseLeave={hideBorder}>
     <div className="col-12 col-lg-4">
-       <div class="card" style={{ borderColor: color }}>
+       <div class="card" style={{ borderColor: color }} onMouseEnter={showBorder} onMouseLeave={hideBorder}>
             {/* <img class="card-img-top" src="..." alt="Card image cap"> */}
             <div class="card-body">
               <h5 class="card-title">{sortedReport.nom} {sortedReport.prenom}</h5>
