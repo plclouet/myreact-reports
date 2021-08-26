@@ -31,7 +31,7 @@ const CardListReport = ({sortedReport, deleteSweetReport, borderColor = '#009688
     // <div className="container">
     // <div className="row-4">
     // <div className="col-md-4" onMouseEnter={showBorder} onMouseLeave={hideBorder}>
-    <div className="col-12 col-lg-4">
+    <div className="col-12 col-md-6 col-lg-4 col-xl-3 p-1">
        <div className="card" style={{ borderColor: color }} onMouseEnter={showBorder} onMouseLeave={hideBorder}>
             {/* <img class="card-img-top" src="..." alt="Card image cap"> */}
             <div className="card-body">
