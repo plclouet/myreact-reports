@@ -86,7 +86,7 @@ getPrint = () => {
 
   render() {
     const { reports } = this.props;
-
+    const sortedReports = reports.slice().sort((a, b) => b.rdvDate < a.rdvDate ? 1: -1);
 
     return (
       <div className="container">
@@ -111,9 +111,10 @@ getPrint = () => {
           
             <thead>
               <tr>
+                <th className={styles.th_big}>rdv</th>
                 <th className={styles.th_big}>Nom</th>
                 <th className={styles.th_medium}>Prenom</th>
-                <th className={styles.th_big}>Titre</th>
+                <th className={styles.th_big}>Examen</th>
                 <th className={styles.th_vbig}>Protocole</th>
                 <th className={styles.no_printable}>Select</th>
               
@@ -121,10 +122,11 @@ getPrint = () => {
             </thead>
             <tbody>
             
-              {reports &&
-                reports.map(
-                  ({ nom, prenom, titre, protocole }, i) => (
+              {sortedReports &&
+                sortedReports.map(
+                  ({ rdvDate, nom, prenom, titre, protocole }, i) => (
                     <tr key={i} >
+                      <td>{rdvDate.slice(0,16)}</td>
                       <td>{nom}</td>
                       <td>{prenom}</td>
                       <td>{titre}</td>
