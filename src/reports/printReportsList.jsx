@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { retrieveReports, deleteReport } from "./actions";
+import { retrieveReports, deleteReport, filterReports } from "./actions";
 import SearchBar from './searchBar';
 
 import styles from "./printReportsList.module.css";
@@ -13,19 +13,17 @@ class PrintReportsList extends Component {
     this.toggleChange = this.toggleChange.bind(this);
     this.state = {
       isChecked: true,
-      reports: this.props.reports,
+     // reports: this.props.reports,
     }
   }
   componentDidMount() {
     this.props.retrieveReports();
   }
 
- //pour la barre de recherche
- updateSearchReports = (prevReports) => {
-  this.setState(() => ({
-    reports:prevReports,
-  }));
-}
+//pour la barre de recherche
+filterSearchReports = (query) => {
+  this.props.filterReports(query).then((res) => {console.log(res)});
+ }
 
 //modifier le check
 toggleChange = () => {
@@ -87,7 +85,7 @@ getPrint = () => {
   
 
   render() {
-    const { reports } = this.state;
+    const { reports } = this.props;
 
 
     return (
@@ -96,7 +94,7 @@ getPrint = () => {
         <div className="col-md-6">
           <h4>Liste des protocoles</h4>
           <div className={styles.no_printable}>
-            <SearchBar updateSearchReports={ this.updateSearchReports }/>
+          <SearchBar filterSearchReports={ this.filterSearchReports }/>
           </div>
           
           <div className={styles.no_printable}>
@@ -152,4 +150,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { retrieveReports, deleteReport })(PrintReportsList);
+export default connect(mapStateToProps, { retrieveReports, deleteReport, filterReports })(PrintReportsList);
