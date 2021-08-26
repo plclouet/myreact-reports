@@ -101,7 +101,7 @@ fireSweetAlert = (id) => {
         
           <div className="container">
          
-             <div className="d-flex flex-wrap"> 
+             <div className="d-flex flex-wrap" style={{backgroundColor: '#0a3d62'}}> 
       
         {sortedReports &&
                 sortedReports.map(sortedReport => (
