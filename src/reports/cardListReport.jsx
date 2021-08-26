@@ -36,7 +36,8 @@ const CardListReport = ({sortedReport, deleteSweetReport, borderColor = '#009688
             {/* <img class="card-img-top" src="..." alt="Card image cap"> */}
             <div className="card-body">
               <h5 className="card-title">{sortedReport.nom} {sortedReport.prenom}</h5>
-              <p className="card-text">{sortedReport.titre} {sortedReport.rdvDate.slice(0,16)}</p>
+              <p className="card-text">{sortedReport.titre}</p>
+              <p className="card-text">{sortedReport.rdvDate.slice(0,16)}</p>
               <div align="center">
                         <button className="btn btn-danger btn-sm mx-1" onClick={() =>{deleteSweetReport(sortedReport.id)}}>
                           Delete
