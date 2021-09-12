@@ -108,3 +108,13 @@
   display:flex;
   justify-content: center;
 }
+
+.box {
+  /* position:relative; */
+  padding:10px;
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:10px;
+  /* display:flex; */
+  /* justify-content: center; */
+}

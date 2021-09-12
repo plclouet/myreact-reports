@@ -180,7 +180,7 @@ class EditReport extends Component {
       <div className={`container-xxl  ${styles.form_color}`}>
          <div className="row">
            
-           <div className="col-8 px-5">
+           <div className="col-lg-8 px-5">
     <h1 className={styles.label_color}>Modification du patient</h1>
       <form>
         <div className="form-group">
@@ -254,7 +254,7 @@ class EditReport extends Component {
           <div className="form-group">
             <label className={styles.label_color} htmlFor="indication">Indication</label>
             <textarea
-              rows={10}
+              rows={3}
               cols={50}
               className="form-control"
               id="indication"
@@ -268,7 +268,7 @@ class EditReport extends Component {
           <div className="form-group">
             <label className={styles.label_color} htmlFor="protocole">Protocole</label>
             <textarea
-              rows={10}
+              rows={3}
               cols={50}
               className="form-control"
               id="protocole"
