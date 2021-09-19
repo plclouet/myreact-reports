@@ -8,23 +8,19 @@ import styles from "./cardProtocole.module.css";
 
 
 
-const CardProtocole = ({protocole, backgroundColor = '#BBC4B9'}) => {
+const CardProtocole = ({protocole, borderColor = '#009688'}) => {
 
  
   const [color, setColor] = useState();
   //const history = useHistory();
  
   const showBorder = () => {
-    setColor(backgroundColor);
+    setColor(borderColor);
   };
  
   const hideBorder = () => {
     setColor('#f5f5f5');
   };
-
-  const clickBorder = () => {
-    setColor('#3F423E');
-  }
 
   const copyDivToClipboard = (e) => {
    
@@ -66,8 +62,8 @@ document.execCommand('copy');
   
   return (
   
-    <div className="col s12 m6 l4 py-2" onMouseEnter={showBorder} onMouseDown={clickBorder} onMouseUp={showBorder} onMouseLeave={hideBorder} >
-      <div className="card"  style={{ backgroundColor: color }} onClick={e => {copyDivToClipboard(e)}}>
+    <div className="col s12 m6 l4 py-2" onMouseEnter={showBorder} onMouseLeave={hideBorder}>
+      <div className="card"  style={{ borderColor: color }}>
         <div className={styles.pointer}>
               <div className="d-flex justify-content-between card-titre" >
               
@@ -75,7 +71,7 @@ document.execCommand('copy');
               
             </div>
               
-              <div id={protocole.id} className="card-content" >
+              <div id={protocole.id} className="card-content" onClick={e => {copyDivToClipboard(e)}}>
                 <p  className={styles.card_box}>{protocole.protocoleContent}</p>
               </div>
 

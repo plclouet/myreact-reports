@@ -1,0 +1,11 @@
+* {
+    box-sizing: border-box;
+  }
+
+  .form_color{
+      background-color: #0a3d62;
+  }
+
+  .label_color{
+      color: white;
+  }
