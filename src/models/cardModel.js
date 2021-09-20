@@ -8,19 +8,23 @@ import styles from "./cardModel.module.css";
 
 
 
-const CardModel = ({model, borderColor = '#009688'}) => {
+const CardModel = ({model, backgroundColor = '#BBC4B9'}) => {
 
  
   const [color, setColor] = useState();
   //const history = useHistory();
  
   const showBorder = () => {
-    setColor(borderColor);
+    setColor(backgroundColor);
   };
  
   const hideBorder = () => {
     setColor('#f5f5f5');
   };
+
+  const clickBorder = () => {
+    setColor('#3F423E');
+  }
 
   const copyDivToClipboard = (e) => {
    
@@ -66,11 +70,11 @@ document.execCommand('copy');
   
   return (
   
-    <div className="col s12 m6 l4 py-2" onMouseEnter={showBorder} onMouseLeave={hideBorder}>
-      <div className="card"  style={{ borderColor: color }} >
+    <div className="col s12 m6 l4 py-2" onMouseEnter={showBorder} onMouseDown={clickBorder} onMouseUp={showBorder} onMouseLeave={hideBorder} >
+      <div className="card m-0 p-2"  style={{ backgroundColor: color }} onClick={e => {copyDivToClipboard(e)}}>
         <div className={styles.pointer}>
               
-                <div className="d-flex justify-content-between card-titre" >
+                <div className="d-flex justify-content-between align-items-center card-titre" >
               
                   <span>{model.modelTitre}</span><FontAwesomeIcon icon={faCopy} />
                   
@@ -79,8 +83,10 @@ document.execCommand('copy');
            
               
               
-              <div id={model.id} className="card-content" onClick={e => {copyDivToClipboard(e)}}>
+              <div id={model.id} className="card-content pt-2">
+                <pre className="m-0">
                 <p  className={styles.card_box}>{model.modelContent}</p>
+                </pre>
               </div>
               
         </div>
