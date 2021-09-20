@@ -169,9 +169,11 @@ class ShowReport extends Component {
  
 
 
-   copyDivToClipboard(id,btn) {
+   copyDivToClipboard(id) {
     
-    
+    this.setState(() => ({
+      isBtnActive: true
+    }));
     var range = document.createRange();
     range.selectNode(document.getElementById(id));
     window.getSelection().removeAllRanges(); // clear current selection
@@ -181,9 +183,14 @@ class ShowReport extends Component {
    
     console.log(this.state.isBtnActive);
     window.getSelection().removeAllRanges();// to deselect
-    var tooltip = document.getElementById(btn);
-    tooltip.style.visibility = "visible";
-    setTimeout(function(){ tooltip.style.visibility = "hidden";}, 1000);
+     setTimeout(() => {this.setState(() => ({
+      isBtnActive: false,
+      
+    }));
+    console.log(this.state.isBtnActive);
+      },2500); 
+
+      console.log(this.state.isBtnActive);
       
 }
 
@@ -214,9 +221,8 @@ class ShowReport extends Component {
                   <pre className="m-0">
                     <p id="indicationArea" className={`${styles.text_cr} ${styles.box} m-0`}>{currentReport.indication}</p>
                   </pre>
-                  <div className={`${styles.tooltip} d-flex justify-content-end p-3`}>
-                      <button onClick={() => {this.copyDivToClipboard("indicationArea","myBtn1")}}>
-                      <span className={`${styles.tooltiptext}`} id="myBtn1">copied</span>
+                  <div className={`${styles.copyText} d-flex justify-content-end `}>
+                      <button onClick={() => {this.copyDivToClipboard("indicationArea")}}>
                       <FontAwesomeIcon icon={faCopy} size="xs"/></button>
                   </div>
                 </div>
@@ -224,9 +230,8 @@ class ShowReport extends Component {
                 <div>
                   <h3 className={styles.text_cr}>technique:</h3>
                   <p id="protocoleArea" className={`${styles.text_cr} ${styles.box} m-0`}>{currentReport.protocole}</p>
-                  <div className={`${styles.tooltip} d-flex justify-content-end p-3`}>
-                      <button onClick={() => {this.copyDivToClipboard("protocoleArea","myBtn2")}}>
-                      <span className={`${styles.tooltiptext}`} id="myBtn2">copied</span>
+                  <div className={`${styles.copyText} d-flex justify-content-end`}>
+                      <button onClick={() => {this.copyDivToClipboard("protocoleArea")}}>
                       <FontAwesomeIcon icon={faCopy} size="xs"/></button>
                   </div>
                 </div>
@@ -236,12 +241,10 @@ class ShowReport extends Component {
                   <pre className="m-0">
                     <p id="contenuArea" className={`${styles.text_cr} ${styles.box} m-0`}>{currentReport.contenu}</p>
                   </pre>
-                  <div className={`${styles.tooltip} d-flex justify-content-end p-3`}>
+                  <div className={`${styles.copyText} d-flex justify-content-end`}>
                     
-                      <button onClick={() => {this.copyDivToClipboard("contenuArea","myBtn3")}}>
-                        <span className={`${styles.tooltiptext}`} id="myBtn3">copied</span>
-                        <FontAwesomeIcon icon={faCopy} size="xs"/>
-                      </button>
+                      <button onClick={() => {this.copyDivToClipboard("contenuArea")}}>
+                      <FontAwesomeIcon icon={faCopy} size="xs"/></button>
                   </div>
                  
                  <br></br>
@@ -255,16 +258,14 @@ class ShowReport extends Component {
 
             <div className="container-fluid">
               <div className="row">
-                <div className="col">
-                  <div className={`${styles.tooltip} d-flex justify-content-end align-items-center p-3`} align="center">
-                <Link to="/">
+                <div className="col d-flex justify-content-center align-items-center">
+                  <div className={`${styles.copyText} d-flex justify-content-center align-items-center`} align="center">
+                 <span>Pour tout copier:</span> 
+                  <button onClick={() => {this.copyDivToClipboard("copyArea")}}>
+                    <FontAwesomeIcon icon={faCopy} size="xs"/></button>
+                  <Link to="/">
                     <button className="m-2"><FontAwesomeIcon icon={faHome} size="xs"/></button>
                   </Link>
-                 {/* <span className="m-2" >Pour tout copier:</span>  */}
-                  <button onClick={() => {this.copyDivToClipboard("copyArea","myBtn4")}}>
-                  <span className={`${styles.tooltiptext}`} id="myBtn4">copied</span>
-                    <FontAwesomeIcon icon={faCopy} size="xs"/></button>
-                  
                 </div>
                
                </div>

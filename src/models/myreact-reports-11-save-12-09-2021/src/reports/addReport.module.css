@@ -1,0 +1,11 @@
+* {
+    box-sizing: border-box;
+  }
+
+  .form_color{
+      background-color: #60a3bc;
+  }
+
+  .container_box {
+      padding: 20px;
+  }

@@ -6,7 +6,7 @@ import ReportsService from "./reportsService";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-regular-svg-icons";
-import { faHome } from "@fortawesome/free-solid-svg-icons";
+
 import styles from "./showReport.module.css";
 
 
@@ -169,9 +169,11 @@ class ShowReport extends Component {
  
 
 
-   copyDivToClipboard(id,btn) {
+   copyDivToClipboard(id) {
     
-    
+    this.setState(() => ({
+      isBtnActive: true
+    }));
     var range = document.createRange();
     range.selectNode(document.getElementById(id));
     window.getSelection().removeAllRanges(); // clear current selection
@@ -181,9 +183,14 @@ class ShowReport extends Component {
    
     console.log(this.state.isBtnActive);
     window.getSelection().removeAllRanges();// to deselect
-    var tooltip = document.getElementById(btn);
-    tooltip.style.visibility = "visible";
-    setTimeout(function(){ tooltip.style.visibility = "hidden";}, 1000);
+     setTimeout(() => {this.setState(() => ({
+      isBtnActive: false,
+      
+    }));
+    console.log(this.state.isBtnActive);
+      },2500); 
+
+      console.log(this.state.isBtnActive);
       
 }
 
@@ -206,42 +213,37 @@ class ShowReport extends Component {
           <div className="container py-5">
 
             <div className="row">
-              <div className="mx-auto px-3 col-sm-8">
-            <h4>Patient(e) {currentReport.nom} {currentReport.prenom}</h4>
-            <div className="py-3"  id="copyArea">
+              <div className="mx-auto px-5 col-sm-8">
+            <h4>Compte rendu du patient {currentReport.nom} {currentReport.prenom}</h4>
+            <div className="py-5"  id="copyArea">
                 <div className={styles.text_cr}>
                   <h1 className={styles.text_cr}>{currentReport.titre}</h1>
-                  <pre className="m-0">
-                    <p id="indicationArea" className={`${styles.text_cr} ${styles.box} m-0`}>{currentReport.indication}</p>
+                  <pre>
+                    <p id="indicationArea" className={styles.text_cr}>{currentReport.indication}</p>
                   </pre>
-                  <div className={`${styles.tooltip} d-flex justify-content-end p-3`}>
-                      <button onClick={() => {this.copyDivToClipboard("indicationArea","myBtn1")}}>
-                      <span className={`${styles.tooltiptext}`} id="myBtn1">copied</span>
+                  <div className={`${styles.copyText} d-flex justify-content-end `}>
+                      <button onClick={() => {this.copyDivToClipboard("indicationArea")}}>
                       <FontAwesomeIcon icon={faCopy} size="xs"/></button>
                   </div>
                 </div>
                 <br></br>
                 <div>
                   <h3 className={styles.text_cr}>technique:</h3>
-                  <p id="protocoleArea" className={`${styles.text_cr} ${styles.box} m-0`}>{currentReport.protocole}</p>
-                  <div className={`${styles.tooltip} d-flex justify-content-end p-3`}>
-                      <button onClick={() => {this.copyDivToClipboard("protocoleArea","myBtn2")}}>
-                      <span className={`${styles.tooltiptext}`} id="myBtn2">copied</span>
+                  <p id="protocoleArea" className={styles.text_cr}>{currentReport.protocole}</p>
+                  <div className={`${styles.copyText} d-flex justify-content-end`}>
+                      <button onClick={() => {this.copyDivToClipboard("protocoleArea")}}>
                       <FontAwesomeIcon icon={faCopy} size="xs"/></button>
                   </div>
                 </div>
                 <br></br>
                 <div>
                   <h3 className={styles.text_cr}>résultat:</h3>
-                  <pre className="m-0">
-                    <p id="contenuArea" className={`${styles.text_cr} ${styles.box} m-0`}>{currentReport.contenu}</p>
+                  <pre>
+                    <p id="contenuArea" className={styles.text_cr}>{currentReport.contenu}</p>
                   </pre>
-                  <div className={`${styles.tooltip} d-flex justify-content-end p-3`}>
-                    
-                      <button onClick={() => {this.copyDivToClipboard("contenuArea","myBtn3")}}>
-                        <span className={`${styles.tooltiptext}`} id="myBtn3">copied</span>
-                        <FontAwesomeIcon icon={faCopy} size="xs"/>
-                      </button>
+                  <div className={`${styles.copyText} d-flex justify-content-end`}>
+                      <button onClick={() => {this.copyDivToClipboard("contenuArea")}}>
+                      <FontAwesomeIcon icon={faCopy} size="xs"/></button>
                   </div>
                  
                  <br></br>
@@ -253,27 +255,22 @@ class ShowReport extends Component {
             </div>  
             {/* fin de la zone à copier */}
 
-            <div className="container-fluid">
+            <div className="container">
               <div className="row">
-                <div className="col">
-                  <div className={`${styles.tooltip} d-flex justify-content-end align-items-center p-3`} align="center">
-                <Link to="/">
-                    <button className="m-2"><FontAwesomeIcon icon={faHome} size="xs"/></button>
-                  </Link>
-                 {/* <span className="m-2" >Pour tout copier:</span>  */}
-                  <button onClick={() => {this.copyDivToClipboard("copyArea","myBtn4")}}>
-                  <span className={`${styles.tooltiptext}`} id="myBtn4">copied</span>
+                <div className="col-6 d-flex justify-content-center align-items-center">
+                  <div className={`${styles.copyText}`} align="center">
+                {/* <span>Cliquer pour copier:</span> */}
+                  <button onClick={() => {this.copyDivToClipboard("copyArea")}}>
                     <FontAwesomeIcon icon={faCopy} size="xs"/></button>
-                  
                 </div>
                
                </div>
                
-           {/*  <div className={`${styles.copyText2} col-6`} >
+            <div className={`${styles.copyText2} col-6`} >
                  <Link to="/">
               <button className="btn btn-secondary">Accueil</button>
             </Link>
-               </div> */}
+               </div>
                  
                   
                     

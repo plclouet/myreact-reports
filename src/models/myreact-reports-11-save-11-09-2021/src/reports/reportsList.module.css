@@ -1,0 +1,65 @@
+* {
+    box-sizing: border-box;
+  }
+
+.exemple {
+    table-layout: fixed;
+    width: 500px;
+    border: 1px solid red;
+  }
+
+  th {
+      width: 100px;
+  }
+
+ .th_small {
+      width: 70px;
+  }
+
+  .th_moy{
+    width: 120px;
+  }
+ 
+
+  .th_big {
+    width: 200px;
+  }
+  
+  tr, td {
+    border: solid;
+  }
+  
+   .box {
+    border: 1px solid blue;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  } 
+
+
+/*   @media all and (max-width: 479px) {
+    td.col_hide{
+        display:none;
+        width:0;
+        height:0;
+        opacity:0;
+        visibility: collapse;
+    }    
+  } */
+
+  @media all and (max-width: 479px) {
+    .col_hide{
+        display:none;
+        width:0;
+        height:0;
+        opacity:0;
+        visibility: collapse;
+    }    
+    .col_small {
+      width: 60px;
+    }
+}
+
+.container {
+  background-color: aqua;
+}
