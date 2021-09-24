@@ -93,7 +93,7 @@ class ListProtocoles extends Component {
                <SearchBarProtocoles updateSearchProtocoles={ this.updateSearchProtocoles }/>
               <div className="col">
                 {/* {ordonnances.map(ordonnance => <li key={ordonnance.id}>{ordonnance.lastName} + {ordonnance.firstName}</li>)} */}
-                {protocoles.map(protocole => (
+                {protocoles.sort((a, b) => b.protocoleTitre < a.protocoleTitre ? 1: -1).map(protocole => (
                   <CardProtocole key={protocole.id} protocole={protocole}/>
                     //  console.log(ordonnance.imageOrdo.url)
                   ))}

@@ -92,7 +92,7 @@ class ListModels extends Component {
                <SearchBarModels updateSearchModels={ this.updateSearchModels }/>
               <div className="col">
                 {/* {ordonnances.map(ordonnance => <li key={ordonnance.id}>{ordonnance.lastName} + {ordonnance.firstName}</li>)} */}
-                {models.map(model => (
+                {models.sort((a, b) => b.modelTitre < a.modelTitre ? 1: -1).map(model => (
                   <CardModel key={model.id} model={model}/>
                     //  console.log(ordonnance.imageOrdo.url)
                   ))}
