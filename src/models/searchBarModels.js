@@ -53,8 +53,23 @@ export default class SearchBarModels extends Component {
             <select className="browser-default custom-select" name="modelTitre_contains"  onChange={ handleChange } onBlur={ handleBlur }>
               <option value="">tous</option>
               <option value="crane">crane</option>
+              <option value="ophtalmo">ophtalmo</option>
+              <option value="ORL">ORL</option>
+              <option value="mammaire">mammaire</option>
+              <option value="cervicale">cervicale</option> 
+              <option value="dorsale">dorsale</option> 
+              <option value="lombaire">lombaire</option> 
+              <option value="bassin">bassin</option> 
+              <option value="foie">foie</option> 
+              <option value="pancreas">pancreas</option> 
+              <option value="renale">renale</option>
+              <option value="epaule">epaule</option> 
+              <option value="coude">coude</option> 
+              <option value="poignet">poignet</option> 
+              <option value="hanche">hanche</option>    
               <option value="genou">genou</option> 
-              <option value="pancreas">pancreas</option>       
+              <option value="cheville">cheville</option> 
+              <option value="pied">pied</option>      
             </select>
             </div>
        
