@@ -50,6 +50,12 @@ const CardProtocole = ({protocole, backgroundColor = '#BBC4B9'}) => {
   textarea.select();
 document.execCommand('copy');
 
+// select and paste
+let pastearea = document.getElementById("protocole");
+pastearea.focus();
+pastearea.value = '';
+pastearea.value += content;
+
   textarea.remove();
    /*  var range = document.createRange();
  
