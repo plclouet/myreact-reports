@@ -8,7 +8,8 @@ export default class SearchBar extends Component {
   
   submit = (values, actions) => {
     const query = '?' + Object.keys(values).map( k => `${ k }=${ values[k]}&`).join('');
-    console.log(query)
+    console.log(values);
+    console.log(query);
 
     this.props.filterSearchReports(query)
     //axios.get(`https://frozen-dawn-43758.herokuapp.com/ordonnances`+ query)
@@ -26,12 +27,25 @@ export default class SearchBar extends Component {
           //  .catch( err => console.log(err));
         
   }
+
+ 
   
   render() {
+    let today = new Date().toISOString().slice(0, 10);
+    let dayAfter = new Date();
+    let dMore2Months = new Date(dayAfter.setMonth(dayAfter.getMonth()+2));
+    let twoMonthAfter = dMore2Months.toISOString().slice(0, 10);
+    let dayBefore = new Date();
+    let dLess1Month = new Date(dayBefore.setMonth(dayBefore.getMonth()-1));
+    let oneMonthBefore = dLess1Month.toISOString().slice(0, 10);
+    console.log(today);
+    console.log(twoMonthAfter);
+    console.log(oneMonthBefore);
+
     return (
       <Formik
         onSubmit={ this.submit }
-        initialValues={ { nom_contains: '', examen_contains: '' } }
+        initialValues={ { nom_contains: '', examen_contains: '', rdvDate_gte:oneMonthBefore, rdvDate_lt:twoMonthAfter } }
       >
         { ({ handleSubmit, handleChange, handleBlur, isSubmitting }) => (
          
@@ -58,6 +72,37 @@ export default class SearchBar extends Component {
               <option value="IRMgene">IRMgene</option>          
             </select>
             </div>
+
+            <div className="row">
+             <div className="form-group col-6 col-md-4 py-2">
+            <label htmlFor="rdvDate_gte">premiere date</label>
+            <input
+              type="date"
+              className="form-control"
+            
+              name="rdvDate_gte"
+              onChange={ handleChange } 
+              onBlur={ handleBlur }
+             
+              
+            />
+          </div> 
+          <div className="form-group col-6 col-md-4 py-2 ">
+            <label htmlFor="rdvDate_lt">deuxieme date</label>
+            <input
+              type="date"
+              className="form-control"
+              
+              name="rdvDate_lt"
+              onChange={ handleChange } 
+              onBlur={ handleBlur }
+             
+              
+            />
+          </div> 
+
+        
+          </div>
        
           <div className="col py-2" style={{marginTop:0}}>
             <button className="btn btn-small btn-success" type="submit" disabled={ isSubmitting } >Submit</button>

@@ -91,7 +91,7 @@ getPrint = () => {
     return (
       <div className="container">
       {/* <div className="list row"> */}
-        <div className="col-md-6">
+        <div className="col-md-12">
           <h4>Liste des protocoles</h4>
           <div className={styles.no_printable}>
           <SearchBar filterSearchReports={ this.filterSearchReports }/>
