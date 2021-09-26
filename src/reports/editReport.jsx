@@ -169,7 +169,7 @@ class EditReport extends Component {
 
     
 
-    console.log(redirect);
+    console.log(currentReport);
   
     
     if (redirect) {

@@ -19,10 +19,14 @@ return(
         </Link>
         </div>
         <div className="ml-auto">
+       
         <Link to="/login">
-            <button className="btn btn-success m-2">Login</button>
+            <button className="btn btn-info m-2">Login</button>
         </Link>
-            <button className="btn btn-danger m-2" onClick={() => handleLogout()}>Logout</button>
+        <button className="btn btn-danger m-2" onClick={() => handleLogout()}>Logout</button>
+        <Link to="/">
+            <button className="btn btn-success m-2">Accueil</button>
+        </Link>
         </div>
     </nav>
     )

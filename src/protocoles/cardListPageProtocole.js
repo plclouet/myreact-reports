@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 
 
-const CardListReport = ({sortedReport, deleteSweetReport, borderColor = '#009688'}) => {
+const CardListPageProtocole = ({protocole, deleteSweetProtocole, borderColor = '#009688'}) => {
 
  
   const [color, setColor] = useState();
@@ -24,7 +24,7 @@ const CardListReport = ({sortedReport, deleteSweetReport, borderColor = '#009688
 
 
 
-  if (sortedReport){
+  if (protocole){
 
   
   return (
@@ -32,24 +32,30 @@ const CardListReport = ({sortedReport, deleteSweetReport, borderColor = '#009688
     // <div className="row-4">
     // <div className="col-md-4" onMouseEnter={showBorder} onMouseLeave={hideBorder}>
     <div className="col-12 col-md-6 col-lg-4 col-xl-3 p-1">
-       <div className="card" style={{ borderColor: color }} onMouseEnter={showBorder} onMouseLeave={hideBorder}>
+       <div className="card text-center" style={{ borderColor: color, height: 220 }} onMouseEnter={showBorder} onMouseLeave={hideBorder}>
             {/* <img class="card-img-top" src="..." alt="Card image cap"> */}
+            <div className="card-header">
+              <h5>{protocole.protocoleTitre}</h5>
+            </div>
             <div className="card-body">
-              <h5 className="card-title">{sortedReport.nom} {sortedReport.prenom}</h5>
-              <p className="card-text">{sortedReport.titre}</p>
-              <p className="card-text">{sortedReport.rdvDate.slice(0,16)}</p>
-              <div align="center">
-                        <button className="btn btn-danger btn-sm mx-1" onClick={() =>{deleteSweetReport(sortedReport.id)}}>
-                          Delete
-                        </button>
-                        <Link to={`/edit-report/${sortedReport.id}`}>
-                          <button className="btn btn-primary btn-sm mx-1">Edit</button>
-                        </Link>
-                        <Link to={`/show-report/${sortedReport.id}`}>
-                          <button className="btn btn-secondary btn-sm">Show</button>
-                        </Link>
+              
+              
+                <div>
+                     <p className="card-text col">{protocole.protocoleContent}</p>
                 </div>
             </div>
+              
+            <div className="card-footer text-muted" align="center">
+                        <button className="btn btn-danger btn-sm mx-1" onClick={() =>{deleteSweetProtocole(protocole.id)}}>
+                          Delete
+                        </button>
+                         <Link to={`/edit-protocole/${protocole.id}`}>
+                          <button className="btn btn-primary btn-sm mx-1">Edit</button>
+                        </Link>
+                        
+                </div>
+                
+            
           </div>
        </div>
       // </div>
@@ -57,4 +63,4 @@ const CardListReport = ({sortedReport, deleteSweetReport, borderColor = '#009688
   )} return null;
 }
  
-export default CardListReport;
+export default CardListPageProtocole;

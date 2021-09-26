@@ -1,6 +1,8 @@
 import {
   CREATE_PROTOCOLE,
   RETRIEVE_PROTOCOLES,
+  UPDATE_PROTOCOLE,
+  DELETE_PROTOCOLE
  
 } from "./actionTypesProtocole";
 
@@ -38,12 +40,12 @@ export const retrieveProtocoles = () => async (dispatch) => {
   }
 };
 
-/* export const updateReport = (id, data) => async (dispatch) => {
+ export const updateProtocole = (id, data) => async (dispatch) => {
   try {
-    const res = await ReportsService.update(id, data);
+    const res = await ProtocolesService.update(id, data);
 
     dispatch({
-      type: UPDATE_REPORT,
+      type: UPDATE_PROTOCOLE,
       payload: data,
     });
     
@@ -52,17 +54,17 @@ export const retrieveProtocoles = () => async (dispatch) => {
   } catch (err) {
     return Promise.reject(err);
   }
-}; */
+}; 
 
-/* export const deleteReport = (id) => async (dispatch) => {
+ export const deleteProtocole = (id) => async (dispatch) => {
   try {
-    await ReportsService.delete(id);
+    await ProtocolesService.delete(id);
 
     dispatch({
-      type: DELETE_REPORT,
+      type: DELETE_PROTOCOLE,
       payload: { id },
     });
   } catch (err) {
     console.log(err);
   }
-}; */
+}; 

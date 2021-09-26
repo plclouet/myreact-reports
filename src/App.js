@@ -11,6 +11,10 @@ import AddProtocole from "./protocoles/addProtocole";
 import Header from './header';
 import PrivateRoute from './privateRoute';
 import LoginForm from "./loginForm";
+import ListPageProtocoles from "./protocoles/listPageProtocoles";
+import EditProtocole from "./protocoles/editProtocole";
+import ListPageModels from "./models/listPageModels";
+import EditModel from "./models/editModel";
 
 export default function App() {
   return (
@@ -36,7 +40,19 @@ export default function App() {
           <PrivateRoute  path="/add-model" comp={AddModel}>
           
           </PrivateRoute>
+          <PrivateRoute  path="/list-models" comp={ListPageModels}>
+          
+          </PrivateRoute>
           <PrivateRoute  path="/add-protocole" comp={AddProtocole}>
+          
+          </PrivateRoute>
+          <PrivateRoute  path="/list-protocoles" comp={ListPageProtocoles}>
+          
+          </PrivateRoute>
+          <PrivateRoute  path="/edit-protocole" comp={EditProtocole}>
+          
+          </PrivateRoute>
+          <PrivateRoute  path="/edit-model" comp={EditModel}>
           
           </PrivateRoute>
           <Route path="/login">

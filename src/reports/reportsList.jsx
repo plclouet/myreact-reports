@@ -89,9 +89,16 @@ fireSweetAlert = (id) => {
             <Link to="/add-model">
               <button className="btn btn-light">Add a model</button>
             </Link>
+            <Link to="/list-models">
+              <button className="btn btn-light">List models</button>
+            </Link>
             <Link to="/add-protocole">
               <button className="btn btn-light">Add a protocole</button>
             </Link>
+            <Link to="/list-protocoles">
+              <button className="btn btn-light">List protocoles</button>
+            </Link>
+            
             <div className="py-2">
             <SearchBar filterSearchReports={ this.filterSearchReports }/>
             </div>

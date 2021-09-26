@@ -1,6 +1,8 @@
 import {
   CREATE_MODEL,
   RETRIEVE_MODELS,
+  UPDATE_MODEL,
+  DELETE_MODEL
  
 } from "./actionTypesModel";
 
@@ -38,12 +40,12 @@ export const retrieveModels = () => async (dispatch) => {
   }
 };
 
-/* export const updateReport = (id, data) => async (dispatch) => {
+ export const updateModel = (id, data) => async (dispatch) => {
   try {
-    const res = await ReportsService.update(id, data);
+    const res = await ModelsService.update(id, data);
 
     dispatch({
-      type: UPDATE_REPORT,
+      type: UPDATE_MODEL,
       payload: data,
     });
     
@@ -52,17 +54,17 @@ export const retrieveModels = () => async (dispatch) => {
   } catch (err) {
     return Promise.reject(err);
   }
-}; */
+}; 
 
-/* export const deleteReport = (id) => async (dispatch) => {
+ export const deleteModel = (id) => async (dispatch) => {
   try {
-    await ReportsService.delete(id);
+    await ModelsService.delete(id);
 
     dispatch({
-      type: DELETE_REPORT,
+      type: DELETE_MODEL,
       payload: { id },
     });
   } catch (err) {
     console.log(err);
   }
-}; */
+}; 

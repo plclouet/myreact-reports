@@ -108,6 +108,9 @@ class AddModel extends Component {
               </button>
              </div>
              <div className="col-4" align="center">
+             <Link to="/list-models">
+              <button className="btn btn-light m-2">list models</button>
+            </Link>
             <Link to="/">
                 <button className="btn btn-light">Accueil</button>
             </Link>

@@ -103,11 +103,14 @@ class AddProtocole extends Component {
           <div className="row justify-content-around py-3">
             <div className="col-4" align="center">
               
-              <button onClick={this.saveProtocole} className="btn btn-light">
+              <button type="button" onClick={this.saveProtocole} className="btn btn-light">
               Submit
               </button>
              </div>
              <div className="col-4" align="center">
+             <Link to="/list-protocoles">
+              <button className="btn btn-light m-2">list protocoles</button>
+            </Link>
             <Link to="/">
                 <button className="btn btn-light">Accueil</button>
             </Link>

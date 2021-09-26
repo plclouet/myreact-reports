@@ -45,7 +45,7 @@ export default class SearchBarProtocoles extends Component {
           <div className="form-group col-7 s12 m-2">
               <input className="form-control" name="protocoleTitre_contains"  placeholder="Search ..." onChange={ handleChange } onBlur={ handleBlur } />
             </div> 
-            
+       
 
 
           

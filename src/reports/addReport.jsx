@@ -225,7 +225,7 @@ class AddReport extends Component {
           <div className="row justify-content-around py-3">
             <div className="col-6" align="center">
               
-              <button onClick={this.saveReport} className="btn btn-light">
+              <button type="button" onClick={this.saveReport} className="btn btn-light">
               Submit
               </button>
              </div>
