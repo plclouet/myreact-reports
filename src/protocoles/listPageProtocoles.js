@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import SearchBarProtocoles from "./searchBarProtocoles";
 import CardListPageProtocole from "./cardListPageProtocole";
-import ProtocolesService from "./protocolesService";
+//import ProtocolesService from "./protocolesService";
 import Swal from 'sweetalert2';
-import { retrieveProtocoles, deleteProtocole } from "./actionsProtocole";
+import { retrieveProtocoles, deleteProtocole, filterProtocoles } from "./actionsProtocole";
 import { Redirect , Link } from "react-router-dom";
 //import ReportsService from "./reportsService";
 
@@ -14,19 +14,33 @@ class ListPageProtocoles extends Component {
   constructor(props) {
     super(props);
   this.deleteSweetProtocole = this.deleteSweetProtocole.bind(this);
+  this.filterSearchProtocoles = this.filterSearchProtocoles.bind(this);
   }
 
  
 
   // State of your application
   state = {
-    protocoles: [],
+    //protocoles: [],
     error: null,
     redirect: false
   }
 
+   componentDidMount() {
+    this.props.retrieveProtocoles();
+   
+  } 
+
+  /* componentDidMount = async () => {
+    try {
+      this.props.retrieveProtocoles();
+    } catch(error) {
+      this.setState({ error })
+    }
+  }   */
+
   // Fetch your restaurants immediately after the component is mounted
-   componentDidMount = async () => {
+    /* componentDidMount = async () => {
     try {
       //const response = await axios.get(`http://localhost:1337/protocoles`);
       const response = await ProtocolesService.getAll();
@@ -34,16 +48,21 @@ class ListPageProtocoles extends Component {
     } catch(error) {
       this.setState({ error })
     }
-  } 
+  }   */
 
  
+//pour la barre de recherche
+filterSearchProtocoles = (query) => {
+  this.props.filterProtocoles(query).then((res) => {console.log(res)});
+ }
+
 
   //pour la barre de recherche
-  updateSearchProtocoles = (prevProtocoles) => {
+ /*  updateSearchProtocoles = (prevProtocoles) => {
     this.setState(() => ({
       protocoles:prevProtocoles,
     }));
-  }
+  } */
 
 
   removeProtocole = (id) => {
@@ -89,12 +108,11 @@ fireSweetAlert = (id) => {
 
 
   render() {
-  /*   const { redirect, currentReport } = this.state;
-    const str=currentReport.rdvDate;
-    const goodDate = str.slice(0, 16);
-
-     */
-    const { error, protocoles, redirect } = this.state
+  
+    const { error, redirect } = this.state;
+    const { protocoles } = this.props;
+   console.log(this.props);
+   const sortedprotocoles = protocoles.slice().sort((a, b) => b.rdvDate < a.rdvDate ? 1: -1);
   
   // Print errors if any
   if (error) {
@@ -112,16 +130,19 @@ fireSweetAlert = (id) => {
             <div className="row">
             
             <h4>Liste des protocoles pour changement</h4>
-            <Link to="/add-protocole">
-              <button className="btn btn-light">Add a protocole</button>
+            <div>
+              <Link to="/add-protocole">
+              <button className="btn btn-light m-2">Add a protocole</button>
             </Link>
+            </div>
+            
 
             <div className="container"> 
-               <SearchBarProtocoles updateSearchProtocoles={ this.updateSearchProtocoles }/>
+               <SearchBarProtocoles  filterSearchProtocoles={this.filterSearchProtocoles}/>
               <div className="d-flex flex-wrap" style={{backgroundColor: '#0a3d62'}}>
                 {/* {ordonnances.map(ordonnance => <li key={ordonnance.id}>{ordonnance.lastName} + {ordonnance.firstName}</li>)} */}
-                {protocoles.sort((a, b) => b.protocoleTitre < a.protocoleTitre ? 1: -1).map(protocole => (
-                  <CardListPageProtocole key={protocole.id} protocole={protocole} deleteSweetProtocole={this.deleteSweetProtocole}/>
+                {sortedprotocoles && sortedprotocoles.map(sortedprotocole => (
+                  <CardListPageProtocole key={sortedprotocole.id} protocole={sortedprotocole} deleteSweetProtocole={this.deleteSweetProtocole}/>
                     //  console.log(ordonnance.imageOrdo.url)
                   ))}
        
@@ -135,11 +156,11 @@ fireSweetAlert = (id) => {
   }
 }
 
-/* const mapStateToProps = (state) => {
+ const mapStateToProps = (state) => {
   return {
     protocoles: state.protocoles,
   };
-}; */
+}; 
 
 //export default ListPageProtocoles;
-export default connect(null, { retrieveProtocoles, deleteProtocole })(ListPageProtocoles);
+export default connect(mapStateToProps, { retrieveProtocoles, deleteProtocole, filterProtocoles })(ListPageProtocoles);

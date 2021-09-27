@@ -2,7 +2,9 @@ import {
   CREATE_MODEL,
   RETRIEVE_MODELS,
   UPDATE_MODEL,
-  DELETE_MODEL
+  DELETE_MODEL,
+  FILTER_MODELS
+
  
 } from "./actionTypesModel";
 
@@ -68,3 +70,18 @@ export const retrieveModels = () => async (dispatch) => {
     console.log(err);
   }
 }; 
+
+export const filterModels = (query) => async (dispatch) => {
+  try {
+    const res = await ModelsService.getFilter(query);
+
+    dispatch({
+      type: FILTER_MODELS,
+      payload: res.data,
+    });
+
+    return Promise.resolve(res.data);
+  } catch (err) {
+    console.log(err);
+  }
+};

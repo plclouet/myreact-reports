@@ -9,6 +9,10 @@ class ProtocolesService {
     return http.get(`/protocoles/${id}`);
   }
 
+  getFilter(query) {
+    return http.get("/protocoles" + query)
+  }
+
   create(data) {
     return http.post("/protocoles", data);
   }
@@ -24,6 +28,8 @@ class ProtocolesService {
   delete(id) {
     return http.delete(`/protocoles/${id}`);
   }
+
+  
 }
 
 export default new ProtocolesService();

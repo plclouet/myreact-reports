@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Formik } from 'formik';
-import axios from 'axios';
+//import axios from 'axios';
 //import ReportsService from "./reportsService";
 
 
@@ -10,18 +10,14 @@ export default class SearchBarProtocoles extends Component {
     const query = '?' + Object.keys(values).map( k => `${ k }=${ values[k]}&`).join('');
     console.log(query)
     //axios.get(`https://frozen-dawn-43758.herokuapp.com/ordonnances`+ query)
-   axios.get('http://localhost:1337/protocoles' + query)
+    this.props.filterSearchProtocoles(query);
+    actions.setSubmitting(false);
     //ReportsService.updateSearch(query)
     //apiMovie.get('/search/movie' + query)
-            .then( response => response.data )
+           // .then( response => response.data )
         
-            .then( protocolesListUpdate => {
-            //   const movies = moviesApi.map(apiMovieMap)
-                console.log(protocolesListUpdate)
-               this.props.updateSearchProtocoles(protocolesListUpdate);
-               actions.setSubmitting(false);
-             })
-            .catch( err => console.log(err));
+          //  .then( actions.setSubmitting(false))
+          //  .catch( err => console.log(err));
         
   }
   

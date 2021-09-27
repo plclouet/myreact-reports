@@ -9,6 +9,10 @@ class ModelsService {
     return http.get(`/models/${id}`);
   }
 
+  getFilter(query) {
+    return http.get("/models" + query)
+  }
+
   create(data) {
     return http.post("/models", data);
   }
