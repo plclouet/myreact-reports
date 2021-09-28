@@ -99,7 +99,7 @@ fireSweetAlert = (id) => {
      */
     const { error, redirect } = this.state;
     const { models } = this.props;
-    const sortedmodels = models.slice().sort((a, b) => b.rdvDate < a.rdvDate ? 1: -1);
+    const sortedmodels = models.slice().sort((a, b) => b.modelTitre < a.modelTitre ? 1: -1);
   
   // Print errors if any
   if (error) {

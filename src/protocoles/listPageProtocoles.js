@@ -112,7 +112,7 @@ fireSweetAlert = (id) => {
     const { error, redirect } = this.state;
     const { protocoles } = this.props;
    console.log(this.props);
-   const sortedprotocoles = protocoles.slice().sort((a, b) => b.rdvDate < a.rdvDate ? 1: -1);
+   const sortedprotocoles = protocoles.slice().sort((a, b) => b.protocoleTitre < a.protocoleTitre ? 1: -1);
   
   // Print errors if any
   if (error) {
