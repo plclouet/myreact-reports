@@ -22,7 +22,7 @@ const CardListReport = ({sortedReport, deleteSweetReport, borderColor = '#009688
     setColor('#f5f5f5');
   };
 
-
+  const isBackgroundRed = sortedReport.incomplet;
 
   if (sortedReport){
 
@@ -34,7 +34,7 @@ const CardListReport = ({sortedReport, deleteSweetReport, borderColor = '#009688
     <div className="col-12 col-md-6 col-lg-4 col-xl-3 p-1">
        <div className="card" style={{ borderColor: color }} onMouseEnter={showBorder} onMouseLeave={hideBorder}>
             {/* <img class="card-img-top" src="..." alt="Card image cap"> */}
-            <div className="card-body">
+            <div className="card-body" style={{backgroundColor: isBackgroundRed ? "lightblue" : ""}}>
               <h5 className="card-title">{sortedReport.nom} {sortedReport.prenom}</h5>
               <p className="card-text">{sortedReport.titre}</p>
               <p className="card-text">{sortedReport.rdvDate.slice(0,16)}</p>

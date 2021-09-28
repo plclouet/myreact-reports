@@ -20,6 +20,7 @@ class AddReport extends Component {
     this.onChangeIndication = this.onChangeIndication.bind(this);
     this.onChangeProtocole = this.onChangeProtocole.bind(this);
     this.onChangeContenu = this.onChangeContenu.bind(this);
+    this.onChangeIncomplet = this.onChangeIncomplet.bind(this);
     this.saveReport = this.saveReport.bind(this);
 
     this.state = {
@@ -31,6 +32,7 @@ class AddReport extends Component {
       indication: "",
       protocole: "",
       contenu:"",
+      incomplet: false,
       redirect: false,
     };
   }
@@ -83,10 +85,29 @@ class AddReport extends Component {
     });
   }
 
-  saveReport() {
-    const { nom, prenom, titre, examen, rdvDate, indication, protocole, contenu } = this.state;
+  onChangeIncomplet(e) {
+    const incomplet = e.target.value;
 
-    this.props.createReport(nom, prenom, titre, examen, rdvDate, indication, protocole, contenu)
+    this.setState(function (prevState) {
+      return {
+        currentReport: {
+          ...prevState.currentReport,
+          incomplet : incomplet,
+        },
+      };
+    });
+  }
+
+  handleChange = () => {
+    this.setState(() => ({
+      incomplet: !this.state.incomplet
+    }))
+  };
+
+  saveReport() {
+    const { nom, prenom, titre, examen, rdvDate, indication, protocole, contenu, incomplet } = this.state;
+
+    this.props.createReport(nom, prenom, titre, examen, rdvDate, indication, protocole, contenu, incomplet)
     .then(this.setState(() => ({
         redirect: true
       })));
@@ -222,6 +243,16 @@ class AddReport extends Component {
               name="contenu"
             />
           </div>
+          <div className="form-group">
+            <label className={styles.label_color}>
+                <input
+                  type="checkbox"
+                  checked={this.state.incomplet}
+                  onChange={this.handleChange}
+                />
+             Incomplet
+             </label>
+          </div>  
           <div className="row justify-content-around py-3">
             <div className="col-6" align="center">
               

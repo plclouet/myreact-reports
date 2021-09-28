@@ -18,6 +18,7 @@ class EditReport extends Component {
     this.onChangeIndication = this.onChangeIndication.bind(this);
     this.onChangeProtocole = this.onChangeProtocole.bind(this);
     this.onChangeContenu = this.onChangeContenu.bind(this);
+    this.onChangeIncomplet = this.onChangeIncomplet.bind(this);
     this.saveReport = this.saveReport.bind(this);
 
     this.state = {
@@ -29,7 +30,8 @@ class EditReport extends Component {
         rdvDate: "",
         indication: "",
         protocole: "",
-        contenu:""
+        contenu:"",
+        incomplet: false
       },
       redirect: false,
     };
@@ -143,6 +145,25 @@ class EditReport extends Component {
       };
     });
   }
+
+  onChangeIncomplet(e) {
+    //const incomplet = e.target.value;
+
+    this.setState(function (prevState) {
+      return {
+        currentReport: {
+          ...prevState.currentReport,
+          incomplet: e.target.checked,
+        },
+      };
+    });
+  }
+
+ /*  handleChange = () => {
+    this.setState(() => ({
+      incomplet: !this.state.currentReport.incomplet
+    }))
+  }; */
 
 
   getReport(id) {
@@ -293,6 +314,18 @@ class EditReport extends Component {
               cols={50}
             />
           </div>
+          <div className="form-group">
+            <label className={styles.label_color}>
+                <input
+                  type="checkbox"
+                  id="incomplet"
+                  checked={currentReport.incomplet}
+                  onChange={this.onChangeIncomplet}
+                  name="incomplet"
+                />
+             Incomplet
+             </label>
+          </div>  
           <div className="row justify-content-around py-3">
             <div className="col-4" align="center">
           <button onClick={this.saveReport} className="btn btn-light">
