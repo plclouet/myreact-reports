@@ -85,24 +85,19 @@ class AddReport extends Component {
     });
   }
 
-  onChangeIncomplet(e) {
-    const incomplet = e.target.value;
+  onChangeIncomplet() {
+    //const incomplet = e.target.value;
 
-    this.setState(function (prevState) {
-      return {
-        currentReport: {
-          ...prevState.currentReport,
-          incomplet : incomplet,
-        },
-      };
+    this.setState({
+      incomplet: !this.state.incomplet,
     });
   }
 
-  handleChange = () => {
+/*   handleChange = () => {
     this.setState(() => ({
       incomplet: !this.state.incomplet
     }))
-  };
+  }; */
 
   saveReport() {
     const { nom, prenom, titre, examen, rdvDate, indication, protocole, contenu, incomplet } = this.state;
@@ -247,8 +242,10 @@ class AddReport extends Component {
             <label className={styles.label_color}>
                 <input
                   type="checkbox"
-                  checked={this.state.incomplet}
-                  onChange={this.handleChange}
+                  id="incomplet"
+                  defaultChecked={this.state.incomplet}
+                  onChange={this.onChangeIncomplet}
+                  name="incomplet"
                 />
              Incomplet
              </label>
