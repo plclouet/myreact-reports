@@ -9,7 +9,7 @@ import {
 import ReportsService from "./reportsService";
 
 export const createReport =
-  (nom, prenom, titre, examen, rdvDate, indication, protocole, contenu) => async (dispatch) => {
+  (nom, prenom, titre, examen, rdvDate, indication, protocole, contenu, incomplet) => async (dispatch) => {
     try {
       const res = await ReportsService.create({
         nom,
@@ -19,7 +19,8 @@ export const createReport =
         rdvDate,
         indication,
         protocole,
-        contenu
+        contenu,
+        incomplet
       });
 
       dispatch({
