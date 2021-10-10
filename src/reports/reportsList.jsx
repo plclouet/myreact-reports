@@ -90,7 +90,7 @@ fireSweetAlert = (id) => {
               <button className="btn btn-light m-2">Add a model</button>
             </Link>
             <Link to="/list-models">
-              <button className="btn btn-light">List models</button>
+              <button className="btn btn-light m-2">List models</button>
             </Link>
             <Link to="/add-protocole">
               <button className="btn btn-light m-2">Add a protocole</button>
