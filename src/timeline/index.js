@@ -36,11 +36,16 @@ class TimeLinePage extends Component {
     const { reports } = this.props;
     const { choiceDate } = this.state;
     const sortedReports = reports.slice().sort((a, b) => b.rdvDate < a.rdvDate ? 1: -1);
+    const uniqueArray = sortedReports.map(sortedReport => sortedReport.rdvDate.slice(0,10));
+    const sortedUniqueReportsObjet = new Set(uniqueArray);
+    const sortedUniqueReports = [...sortedUniqueReportsObjet];
     const filterReports = sortedReports.filter(function (sortedReport) {
       return sortedReport.rdvDate.slice(0,10) === choiceDate;
     });
-    console.log("sortedReports",sortedReports)
+    console.log("sortedReports",sortedReports);
     console.log("filterReports",filterReports);
+    // console.log("uniqueArray", uniqueArray);
+    console.log("sortedUniqueReports", sortedUniqueReports);
 
     if (sortedReports){
       
@@ -51,8 +56,8 @@ class TimeLinePage extends Component {
              <select className="form-select text-center" name="choiceDate" id="choiceDate" 
              onChange={this.handleChange} 
              style={{width: "200px"}}>
-               {sortedReports.map((sortedReport) => (
-              <option key={sortedReport.id} value={sortedReport.rdvDate.slice(0,10)}>{sortedReport.rdvDate.slice(0,10)}</option>
+               {sortedUniqueReports.map((sortedUniqueReport) => (
+              <option key={sortedUniqueReport.id} value={sortedUniqueReport}>{sortedUniqueReport}</option>
                ))}
               </select>
           </div>
