@@ -15,6 +15,8 @@ import ListPageProtocoles from "./protocoles/listPageProtocoles";
 import EditProtocole from "./protocoles/editProtocole";
 import ListPageModels from "./models/listPageModels";
 import EditModel from "./models/editModel";
+import TimeLinePage from "./timeline";
+
 
 export default function App() {
   return (
@@ -53,6 +55,9 @@ export default function App() {
           
           </PrivateRoute>
           <PrivateRoute  path="/edit-model" comp={EditModel}>
+          
+          </PrivateRoute>
+          <PrivateRoute  path="/timeline" comp={TimeLinePage}>
           
           </PrivateRoute>
           <Route path="/login">

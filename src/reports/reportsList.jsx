@@ -63,40 +63,43 @@ fireSweetAlert = (id) => {
 
   render() {
 
-    console.log("pros retrieveReports");
-    console.log(this.props.reports);
+    console.log("pros");
+    console.log(this.props);
       console.log("state");
     console.log(this.state);
 
    
     const { reports } = this.props;
     const sortedReports = reports.slice().sort((a, b) => b.rdvDate < a.rdvDate ? 1: -1);
-
+  
     return (
       <div className="container"> 
       <h4 className="py-3" align="center">Liste des comptes rendus</h4>
           
           <div>
             <Link to="/">
-              <button className="btn btn-light">Accueil</button>
+              <button className="btn btn-light m-2">Accueil</button>
             </Link>
             <Link to="/add-report">
-              <button className="btn btn-light">Add a report</button>
+              <button className="btn btn-light m-2">Add a report</button>
             </Link>
             <Link to="/print-report">
-              <button className="btn btn-light">Print list of reports</button>
+              <button className="btn btn-light m-2">Print list of reports</button>
             </Link>
             <Link to="/add-model">
-              <button className="btn btn-light">Add a model</button>
+              <button className="btn btn-light m-2">Add a model</button>
             </Link>
             <Link to="/list-models">
               <button className="btn btn-light">List models</button>
             </Link>
             <Link to="/add-protocole">
-              <button className="btn btn-light">Add a protocole</button>
+              <button className="btn btn-light m-2">Add a protocole</button>
             </Link>
             <Link to="/list-protocoles">
-              <button className="btn btn-light">List protocoles</button>
+              <button className="btn btn-light m-2">List protocoles</button>
+            </Link>
+            <Link to="/timeline">
+              <button className="btn btn-light m-2">Timeline</button>
             </Link>
             
             <div className="py-2">
