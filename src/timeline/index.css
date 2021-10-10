@@ -119,10 +119,11 @@ body {
   font-weight: bold;
 }
 .timeline-item-content p {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 24px;
   margin: 15px 0;
   max-width: 250px;
+  font-weight: bold;
 }
 .timeline-item-content a {
   font-size: 14px;
@@ -192,9 +193,13 @@ body {
     display: none;
 }
 .timeline-item-content {
- 
+
   width: 450px;
- 
+
+}
+.timeline-item-content p {
+  font-size: 14px;
+
 }
 
 

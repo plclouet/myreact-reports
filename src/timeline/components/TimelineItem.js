@@ -18,7 +18,7 @@ const TimelineItem = ({ data }) => {
                     {data.examen}
                 </span>
                 <time className="pb-2">{data.rdvDate.slice(0,16)}</time>
-                <h4>{data.nom} {data.prenom}</h4>
+                <p>{data.nom} {data.prenom}</p>
                 <span>{data.titre}</span>
                 
                 <span className="circle" />
@@ -34,7 +34,7 @@ const TimelineItem = ({ data }) => {
                         {data.examen}
                     </span>
                     <time className="pb-2">{data.rdvDate.slice(0,16)}</time>
-                    <h4>{data.nom} {data.prenom}</h4>
+                    <p>{data.nom} {data.prenom}</p>
                     <span>{data.titre}</span>
                     
                     <span className="circle" />
