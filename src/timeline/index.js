@@ -42,6 +42,7 @@ class TimeLinePage extends Component {
     const filterReports = sortedReports.filter(function (sortedReport) {
       return sortedReport.rdvDate.slice(0,10) === choiceDate;
     });
+    console.log("choiceDate", choiceDate);
     console.log("sortedReports",sortedReports);
     console.log("filterReports",filterReports);
     // console.log("uniqueArray", uniqueArray);
