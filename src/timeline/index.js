@@ -56,8 +56,8 @@ class TimeLinePage extends Component {
              <select className="form-select text-center" name="choiceDate" id="choiceDate" 
              onChange={this.handleChange} 
              style={{width: "200px"}}>
-               {sortedUniqueReports.map((sortedUniqueReport) => (
-              <option key={sortedUniqueReport.id} value={sortedUniqueReport}>{sortedUniqueReport}</option>
+               {sortedUniqueReports.map((sortedUniqueReport,index) => (
+              <option key={index} value={sortedUniqueReport}>{sortedUniqueReport}</option>
                ))}
               </select>
           </div>
