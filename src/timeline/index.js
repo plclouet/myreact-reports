@@ -19,8 +19,10 @@ class TimeLinePage extends Component {
    componentDidMount() {
     this.props.retrieveReports()
     .then(() => {
+      console.log("componentdidmount",this.props.reports);
+      const sortedReports = this.props.reports.slice().sort((a, b) => b.rdvDate < a.rdvDate ? 1: -1);
       this.setState({
-        choiceDate: this.props.reports[0].rdvDate.slice(0,10),
+        choiceDate: sortedReports[0].rdvDate.slice(0,10),
       });
     });
   } 
