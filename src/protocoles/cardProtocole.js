@@ -8,7 +8,7 @@ import styles from "./cardProtocole.module.css";
 
 
 
-const CardProtocole = ({protocole, backgroundColor = '#BBC4B9'}) => {
+const CardProtocole = ({protocole, backgroundColor = '#f8c291'}) => {
 
  
   const [color, setColor] = useState();
@@ -29,7 +29,7 @@ const CardProtocole = ({protocole, backgroundColor = '#BBC4B9'}) => {
   const copyDivToClipboard = (e) => {
    
     const content = e.target.innerText;
-    console.log(content);
+    // console.log(content);
   // Create textarea element
   const textarea = document.createElement('textarea');
   

@@ -8,7 +8,7 @@ import styles from "./cardModel.module.css";
 
 
 
-const CardModel = ({model, backgroundColor = '#BBC4B9'}) => {
+const CardModel = ({model, backgroundColor = '#ff5e57'}) => {
 
  
   const [color, setColor] = useState();
@@ -30,7 +30,7 @@ const CardModel = ({model, backgroundColor = '#BBC4B9'}) => {
    
       
     const content = e.target.innerText;
-    console.log(content);
+    // console.log(content);
  
     
   

@@ -8,7 +8,7 @@ class TimeLinePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      choiceDate: '',
+      choiceDate: [],
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -42,7 +42,8 @@ class TimeLinePage extends Component {
     const sortedUniqueReportsObjet = new Set(uniqueArray);
     const sortedUniqueReports = [...sortedUniqueReportsObjet];
     const filterReports = sortedReports.filter(function (sortedReport) {
-      return sortedReport.rdvDate.slice(0,10) === choiceDate;
+      // return sortedReport.rdvDate.slice(0,10) === choiceDate;
+      return choiceDate.includes(sortedReport.rdvDate.slice(0,10)) ;
     });
     console.log("choiceDate", choiceDate);
     console.log("sortedReports",sortedReports);
@@ -59,9 +60,11 @@ class TimeLinePage extends Component {
              <select className="form-select text-center" name="choiceDate" id="choiceDate" 
              onChange={this.handleChange} 
              style={{width: "200px"}}>
+               
                {sortedUniqueReports.map((sortedUniqueReport,index) => (
               <option key={index} value={sortedUniqueReport}>{sortedUniqueReport}</option>
                ))}
+               <option value={sortedUniqueReports}>All</option>
               </select>
           </div>
         

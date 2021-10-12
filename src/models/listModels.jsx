@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import SearchBarModels from "./searchBarModels";
 import CardModel from "./cardModel";
-import ModelsService from "./modelsService";
+import { retrieveModels, filterModels } from "./actionsModel";
+// import ModelsService from "./modelsService";
 //import axios from 'axios';
 //import { updateReport } from "./actions";
 //import { Link } from "react-router-dom";
@@ -9,63 +11,29 @@ import ModelsService from "./modelsService";
 //import styles from "./showReport.module.css";
 
 class ListModels extends Component {
- /*  constructor(props) {
+  constructor(props) {
     super(props);
-   
-   // this.saveReport = this.saveReport.bind(this);
-    this.copyDivToClipboard = this.copyDivToClipboard.bind(this);
-
-    
+ 
+  this.filterSearchModels = this.filterSearchModels.bind(this);
   }
- */
 
   // State of your application
   state = {
-    models: [],
+
     error: null
   }
 
-  // Fetch your restaurants immediately after the component is mounted
-  componentDidMount = async () => {
-    try {
-      //const response = await axios.get(`http://localhost:1337/models`);
-      const response = await ModelsService.getAll();
-      this.setState({ models: response.data })
-    } catch(error) {
-      this.setState({ error })
-    }
-  }
-
-
-  //pour la barre de recherche
-  
-  updateSearchModels = (prevModels) => {
-    this.setState(() => ({
-      models:prevModels,
-    }));
-  }
-
-/*    componentDidMount() {
-    this.getReport(window.location.pathname.replace("/show-report/", ""));
+  componentDidMount() {
+    this.props.retrieveModels();
   } 
 
 
-  saveReport() {
-    this.props
-      .updateReport(this.state.currentReport.id, this.state.currentReport)
-      .then(this.setState(() => ({
-        redirect: true
-      })));
-  } */
+ //pour la barre de recherche
+filterSearchModels = (query) => {
+  this.props.filterModels(query).then((res) => {console.log(res)});
+ }
 
-/*    copyDivToClipboard() {
-    var range = document.createRange();
-    range.selectNode(document.getElementById("copyArea"));
-    window.getSelection().removeAllRanges(); // clear current selection
-    window.getSelection().addRange(range); // to select text
-    document.execCommand("copy");
-    window.getSelection().removeAllRanges();// to deselect
-} */
+
 
   render() {
   /*   const { redirect, currentReport } = this.state;
@@ -73,7 +41,10 @@ class ListModels extends Component {
     const goodDate = str.slice(0, 16);
 
      */
-    const { error, models } = this.state
+    const { error } = this.state;
+    const { models } = this.props;
+    console.log(this.props);
+    const sortedModels = models.slice().sort((a, b) => b.modelTitre < a.modelTitre ? 1: -1);
   
   // Print errors if any
   if (error) {
@@ -89,11 +60,11 @@ class ListModels extends Component {
             <h4>Liste des models</h4>
 
             <div className="container"> 
-               <SearchBarModels updateSearchModels={ this.updateSearchModels }/>
+               <SearchBarModels filterSearchModels={this.filterSearchModels}/>
               <div className="col">
                 {/* {ordonnances.map(ordonnance => <li key={ordonnance.id}>{ordonnance.lastName} + {ordonnance.firstName}</li>)} */}
-                {models.sort((a, b) => b.modelTitre < a.modelTitre ? 1: -1).map(model => (
-                  <CardModel key={model.id} model={model}/>
+                {sortedModels && sortedModels.map(sortedModel => (
+                  <CardModel key={sortedModel.id} model={sortedModel}/>
                     //  console.log(ordonnance.imageOrdo.url)
                   ))}
        
@@ -124,4 +95,10 @@ class ListModels extends Component {
   }
 }
 
-export default ListModels;
+const mapStateToProps = (state) => {
+  return {
+    models: state.models,
+  };
+}; 
+
+export default connect(mapStateToProps, { retrieveModels, filterModels })(ListModels);

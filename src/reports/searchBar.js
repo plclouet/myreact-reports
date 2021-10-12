@@ -11,7 +11,7 @@ export default class SearchBar extends Component {
     console.log(values);
     console.log(query);
 
-    this.props.filterSearchReports(query)
+    this.props.filterSearchReports(query);
     //axios.get(`https://frozen-dawn-43758.herokuapp.com/ordonnances`+ query)
   // axios.get('http://localhost:1337/reports' + query)
     //ReportsService.updateSearch(query)

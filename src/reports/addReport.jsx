@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createReport } from "./actions";
+import { filterProtocoles } from "../protocoles/actionsProtocole";
+import { filterModels } from "../models/actionsModel";
 import { Redirect, Link } from "react-router-dom";
 
 //import  ShowProtocoles  from "../protocoles/showProtocoles";
@@ -22,6 +24,7 @@ class AddReport extends Component {
     this.onChangeContenu = this.onChangeContenu.bind(this);
     this.onChangeIncomplet = this.onChangeIncomplet.bind(this);
     this.saveReport = this.saveReport.bind(this);
+    this.apiTitre = this.apiTitre.bind(this);
 
     this.state = {
       nom: "",
@@ -34,6 +37,9 @@ class AddReport extends Component {
       contenu:"",
       incomplet: false,
       redirect: false,
+      autoSelectProtocoles: [],
+      autoSelectModels: [],
+   
     };
   }
 
@@ -52,13 +58,37 @@ class AddReport extends Component {
   onChangeTitre(e) {
     this.setState({
       titre: e.target.value,
-    });
+    }, () => this.apiTitre());
+   
+  }
+
+  apiTitre() {
+    const queryTitre = this.state.titre.slice(4,);
+    console.log("titre", this.state.titre);
+    console.log("queryTitre",queryTitre);
+    console.log("longueur",queryTitre.length);
+    
+    const queryP = `?protocoleTitre_contains=${queryTitre}`;
+    (queryTitre && this.props.filterProtocoles(queryP).then((res) => {
+      this.setState({
+        autoSelectProtocoles:res
+      })
+    }))
+    const queryM = `?modelTitre_contains=${queryTitre}`;
+    (queryTitre && this.props.filterModels(queryM).then((res) => {
+      this.setState({
+        autoSelectModels:res
+      })
+    }))
+    console.log(this.state.autoSelectProtocoles)
+    console.log(this.state.autoSelectModels) 
   }
 
   onChangeExamen(e) {
     this.setState({
       examen: e.target.value,
-    });
+    })
+    
   }
 
   onChangeRdvDate(e) {
@@ -93,11 +123,7 @@ class AddReport extends Component {
     });
   }
 
-/*   handleChange = () => {
-    this.setState(() => ({
-      incomplet: !this.state.incomplet
-    }))
-  }; */
+ 
 
   saveReport() {
     const { nom, prenom, titre, examen, rdvDate, indication, protocole, contenu, incomplet } = this.state;
@@ -109,8 +135,11 @@ class AddReport extends Component {
   }
 
   render() {
-    const { redirect } = this.state;
-    console.log(redirect);
+    const { redirect, autoSelectProtocoles, autoSelectModels, titre } = this.state;
+    console.log("titre render",titre);
+  
+  
+    
 
     if (redirect) {
       return <Redirect to="/" />;
@@ -122,8 +151,7 @@ class AddReport extends Component {
         <div className="row">
           <div className="col-lg-8">
 
-    {/*   <div className={`container py-5 ${styles.form_color}`}>
-         <div className="row"> */}
+    
           
     <h1>Nouveau patient</h1>
       <form>
@@ -272,7 +300,7 @@ class AddReport extends Component {
     </div>
     {/* fin de la première moitiée */}
     <div className="col-lg-4">
-      <AddReportPart2 />
+      <AddReportPart2 autoSelectProtocoles={autoSelectProtocoles} autoSelectModels={autoSelectModels}/>
     </div>
 {/* fin de la deuxième moitiée */}
     </div>
@@ -281,4 +309,4 @@ class AddReport extends Component {
   }
 }
 
-export default connect(null, { createReport })(AddReport);
+export default connect(null, { createReport, filterProtocoles, filterModels })(AddReport);
