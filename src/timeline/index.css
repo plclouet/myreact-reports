@@ -34,12 +34,7 @@ body {
   margin: 10px 0;
   width: 50%;
 }
-/* .timeline-item:nth-child(odd) {
-  align-self: flex-end;
-  justify-content: flex-start;
-  padding-left: 30px;
-  padding-right: 0;
-} */
+
 
 .timeline-item.right {
   align-self: flex-end;
@@ -47,6 +42,13 @@ body {
   padding-left: 30px;
   padding-right: 0;
 }
+
+/* .timeline-item.left {
+  align-self: flex-start;
+  justify-content: flex-end;
+  padding-left: 30px;
+  padding-right: 0;
+}  */
 
 .timeline-item-content {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
@@ -71,6 +73,16 @@ body {
   transform: rotate(45deg);
   width: 15px;
   height: 15px;
+}
+/* .timeline-item-content .after-none {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+.timeline-item-content .after-none a::after {
+  content: none;
+ 
 }
 /* .timeline-item:nth-child(odd) .timeline-item-content {
   text-align: left;
@@ -104,10 +116,20 @@ body {
   position: absolute;
   text-transform: uppercase;
 }
-/* .timeline-item:nth-child(odd) .timeline-item-content .tag {
-  left: auto;
+.timeline-item.right .timeline-item-content .after-none {
+  bottom: 5px;
   right: 5px;
-} */
+  padding: 5px;
+  position: absolute;
+}
+.timeline-item.left .timeline-item-content .after-none {
+  bottom: 5px;
+  left: 5px;
+  padding: 5px;
+  position: absolute;
+}
+
+
 
 .timeline-item.right .timeline-item-content .tag {
   left: auto;
