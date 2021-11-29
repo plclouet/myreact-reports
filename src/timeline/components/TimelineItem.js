@@ -6,6 +6,7 @@ const TimelineItem = ({ data }) => {
     
     const isRight = data.examen;
    
+    const isBackgroundRed = data.incomplet;
   
     
     if (isRight==="IRMgene"){
@@ -13,7 +14,7 @@ const TimelineItem = ({ data }) => {
           
             <div className="timeline-item right">
             
-            <div className="timeline-item-content">
+            <div className="timeline-item-content" style={{backgroundColor: isBackgroundRed ? "lightblue" : ""}}>
                 
                 <span className="tag" style={{ backgroundColor: "#636e72" }}>
                     {data.examen}
@@ -40,7 +41,7 @@ const TimelineItem = ({ data }) => {
         )}else{
             return(
                 <div className="timeline-item left">
-                <div className="timeline-item-content">
+                <div className="timeline-item-content" style={{backgroundColor: isBackgroundRed ? "lightblue" : ""}}>
                     
                     <span className="tag" style={{ backgroundColor: "#273c75" }}>
                         {data.examen}
