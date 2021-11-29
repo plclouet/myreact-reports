@@ -49,13 +49,12 @@ const TimelineItem = ({ data }) => {
                     <p>{data.nom} {data.prenom}</p>
                     
                     <div className="after-none">
-                            <Link to={`/edit-report/${data.id}`}>
-                            <button className="btn btn-primary btn-sm mx-2">Edit</button>
-                            </Link>
-                        
-                        
+                            
                             <Link to={`/show-report/${data.id}`}>
                             <button className="btn btn-secondary btn-sm mx-auto">Show</button>
+                            </Link>
+                            <Link to={`/edit-report/${data.id}`}>
+                            <button className="btn btn-primary btn-sm mx-2">Edit</button>
                             </Link>
                     </div>
                     <div>{data.titre}</div>
