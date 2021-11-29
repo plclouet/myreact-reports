@@ -18,9 +18,9 @@ const TimelineItem = ({ data }) => {
                 <span className="tag" style={{ backgroundColor: "#636e72" }}>
                     {data.examen}
                 </span>
-                <time className="pb-2">{data.rdvDate.slice(0,16)}</time>
+                <time>{data.rdvDate.slice(0,16)}</time>
                 <p>{data.nom} {data.prenom}</p>
-                <div>{data.titre}</div>
+                <div className="titre">{data.titre}</div>
                 <div className="after-none">
                         <Link to={`/edit-report/${data.id}`}>
                           <button className="btn btn-primary btn-sm mx-2">Edit</button>
@@ -45,7 +45,7 @@ const TimelineItem = ({ data }) => {
                     <span className="tag" style={{ backgroundColor: "#273c75" }}>
                         {data.examen}
                     </span>
-                    <time className="pb-2">{data.rdvDate.slice(0,16)}</time>
+                    <time>{data.rdvDate.slice(0,16)}</time>
                     <p>{data.nom} {data.prenom}</p>
                     
                     <div className="after-none">
@@ -57,7 +57,7 @@ const TimelineItem = ({ data }) => {
                             <button className="btn btn-primary btn-sm mx-2">Edit</button>
                             </Link>
                     </div>
-                    <div>{data.titre}</div>
+                    <div className="titre">{data.titre}</div>
                     <span className="circle" />
                 </div>
             </div>

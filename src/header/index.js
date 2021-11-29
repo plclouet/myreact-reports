@@ -13,7 +13,7 @@ function handleLogout() {
 }
 return(
     <nav className="navbar navbar-dark nav_color">
-        <div className="row col-12n d-flex justify-content-center text-white p-2">
+        <div className="row col-12n d-flex justify-content-center text-white">
         <Link to="/">
             <button className="btn btn-success m-2">Accueil</button>
         </Link>
