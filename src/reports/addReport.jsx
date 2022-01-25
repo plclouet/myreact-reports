@@ -63,7 +63,7 @@ class AddReport extends Component {
   }
 
   apiTitre() {
-    const queryTitre = this.state.titre.slice(4,);
+    const queryTitre = this.state.titre.slice(4,7);
     console.log("titre", this.state.titre);
     console.log("queryTitre",queryTitre);
     console.log("longueur",queryTitre.length);
