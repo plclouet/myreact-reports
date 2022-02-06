@@ -4,6 +4,8 @@ import { updateReport } from "./actions";
 import { Redirect, Link } from "react-router-dom";
 import ReportsService from "./reportsService";
 import AddReportPart2 from "./addReportPart2";
+import { filterProtocoles } from "../protocoles/actionsProtocole";
+import { filterModels } from "../models/actionsModel";
 
 import styles from "./editReport.module.css";
 
@@ -20,6 +22,7 @@ class EditReport extends Component {
     this.onChangeContenu = this.onChangeContenu.bind(this);
     this.onChangeIncomplet = this.onChangeIncomplet.bind(this);
     this.saveReport = this.saveReport.bind(this);
+    this.apiTitre = this.apiTitre.bind(this);
 
     this.state = {
       currentReport: {
@@ -34,12 +37,16 @@ class EditReport extends Component {
         incomplet: false
       },
       redirect: false,
+      autoSelectProtocoles: [],
+      autoSelectModels: []
     };
   }
 
    componentDidMount() {
+  
      this.getReport(window.location.pathname.replace("/edit-report/", ""));
- 
+   
+     
   } 
 
   onChangeNom(e) {
@@ -78,7 +85,7 @@ class EditReport extends Component {
           titre: titre,
         },
       };
-    });
+    },() => this.apiTitre());
   }
 
   onChangeExamen(e) {
@@ -165,12 +172,34 @@ class EditReport extends Component {
     }))
   }; */
 
+   
+  apiTitre() {
+    const queryTitre = this.state.currentReport.titre.slice(4,7);
+    console.log("titre", this.state.currentReport.titre);
+    console.log("queryTitre",queryTitre);
+    console.log("longueur",queryTitre.length);
+    
+    const queryP = `?protocoleTitre_contains=${queryTitre}`;
+    (queryTitre && this.props.filterProtocoles(queryP).then((res) => {
+      this.setState({
+        autoSelectProtocoles:res
+      })
+    }))
+    const queryM = `?modelTitre_contains=${queryTitre}`;
+    (queryTitre && this.props.filterModels(queryM).then((res) => {
+      this.setState({
+        autoSelectModels:res
+      })
+    }))
+    console.log(this.state.autoSelectProtocoles)
+    console.log(this.state.autoSelectModels) 
+  }
 
   getReport(id) {
     ReportsService.get(id).then((response) => {
       this.setState({
         currentReport: response.data,
-      });
+      }, () => this.apiTitre());
     });
   }
 
@@ -184,10 +213,10 @@ class EditReport extends Component {
   }
 
   render() {
-    const { redirect, currentReport } = this.state;
+    const { redirect, currentReport, autoSelectModels, autoSelectProtocoles } = this.state;
     const str=currentReport.rdvDate;
     const goodDate = str.slice(0, 16);
-
+  
     
 
     console.log(currentReport);
@@ -342,7 +371,7 @@ class EditReport extends Component {
       </div>
        {/* fin de la première moitiée */}
     <div className="col-lg-4">
-      <AddReportPart2 />
+      <AddReportPart2 autoSelectProtocoles={autoSelectProtocoles} autoSelectModels={autoSelectModels}/>
     </div>
 {/* fin de la deuxième moitiée */}
       </div>
@@ -351,4 +380,4 @@ class EditReport extends Component {
   }
 }
 
-export default connect(null, { updateReport })(EditReport);
+export default connect(null, { updateReport, filterProtocoles, filterModels })(EditReport);

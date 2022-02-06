@@ -129,9 +129,22 @@ class AddReport extends Component {
     const { nom, prenom, titre, examen, rdvDate, indication, protocole, contenu, incomplet } = this.state;
 
     this.props.createReport(nom, prenom, titre, examen, rdvDate, indication, protocole, contenu, incomplet)
-    .then(this.setState(() => ({
-        redirect: true
-      })));
+   /*  .then(() => {
+      document.getElementById("incomplet").checked = false;
+    }) */
+    .then(this.setState({
+        // redirect: true
+        nom: "",
+        prenom: "",
+        titre: "",
+        indication: "",
+        protocole: "",
+        contenu:"",
+        incomplet: false,
+        
+      }, () => {
+        document.getElementById("incomplet").checked = false;
+      }));
   }
 
   render() {

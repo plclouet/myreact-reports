@@ -8,7 +8,9 @@ function Header(props) {
 
 
 function handleLogout() {
-    localStorage.removeItem("JWT_REPORTS")
+    localStorage.removeItem("JWT_REPORTS");
+    localStorage.removeItem("LAST_DATE");
+    localStorage.removeItem("LAST_TYPE_IRM");
     props.history.push('/login')
 }
 return(

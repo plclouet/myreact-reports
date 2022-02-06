@@ -13,11 +13,12 @@ class AddReportPart2 extends Component {
     this.state = {
       name: "React",
       showHideDemo1: false,
-      showHideDemo2: false
+      showHideDemo2: false,
+   
      
     };
     this.hideComponent = this.hideComponent.bind(this);
-    
+  
   
   }
 
@@ -37,10 +38,10 @@ class AddReportPart2 extends Component {
     }
   }
 
- 
+
 
   render() {
-    // console.log(this.props);
+    console.log(this.state);
     const { showHideDemo1, showHideDemo2 } = this.state;
     const { autoSelectProtocoles, autoSelectModels } = this.props;
     // const sortedprotocoles = protocoles.slice(0,2).sort((a, b) => b.protocoleTitre < a.protocoleTitre ? 1: -1);
