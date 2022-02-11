@@ -170,7 +170,7 @@ fireSweetAlert = (id) => {
      console.log("filterReports",filterReports);
   
     return (
-      <div className="container"> 
+      <div className="container pb-5"> 
       <h4 className="py-3" align="center">Liste des comptes rendus</h4>
           
           <div className="d-flex flex-column">
