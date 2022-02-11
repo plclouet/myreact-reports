@@ -45,6 +45,16 @@ class ReportsList extends Component {
           document.querySelector('#choiceDate').value = sortedReports[0].rdvDate.slice(0,10);
        
                 })
+      }else if(lastChoiceTypeIRM && lastChoiceDate){
+        this.setState({
+          typeIRM: lastChoiceTypeIRM,
+          choiceDate: lastChoiceDate
+        }, () => {
+       
+          document.querySelector('#choiceTypeIRM').value = lastChoiceTypeIRM;
+          document.querySelector('#choiceDate').value = lastChoiceDate;
+       
+                })
       }else if(lastChoiceTypeIRM && !lastChoiceDate){
         this.setState({
           typeIRM: lastChoiceTypeIRM,
