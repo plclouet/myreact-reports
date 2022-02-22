@@ -8,7 +8,8 @@ class TimeLinePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      choiceDate: [],
+      choiceDate: []
+     
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -20,27 +21,50 @@ class TimeLinePage extends Component {
     this.props.retrieveReports()
     .then(() => {
       console.log("componentdidmount",this.props.reports);
-      const sortedReports = this.props.reports.slice().sort((a, b) => b.rdvDate < a.rdvDate ? 1: -1);
+      const lastChoiceDate = localStorage.getItem("LAST_DATE");
+      if(!lastChoiceDate){
+        const sortedReports = this.props.reports.slice().sort((a, b) => b.rdvDate < a.rdvDate ? 1: -1);
       this.setState({
         choiceDate: sortedReports[0].rdvDate.slice(0,10),
       });
+      }else{
+        this.setState({
+      
+        choiceDate: lastChoiceDate,
+      }, () => {
+       
+        document.querySelector('#choiceDate').value = lastChoiceDate;
+     
+              }
+            );
+      }
     });
   } 
+
+ 
 
 
   handleChange(e) {
    
-    this.setState({ choiceDate: e.target.value });
+    this.setState({ 
+      choiceDate: e.target.value
+     }, localStorage.setItem("LAST_DATE",e.target.value));
+     console.log("LAST_DATE", localStorage.getItem("LAST_DATE"))
   }
 
   render() {
    
     const { reports } = this.props;
     const { choiceDate } = this.state;
+    console.log("choiceDate", choiceDate);
     const sortedReports = reports.slice().sort((a, b) => b.rdvDate < a.rdvDate ? 1: -1);
     const uniqueArray = sortedReports.map(sortedReport => sortedReport.rdvDate.slice(0,10));
+    console.log("uniqueArray", uniqueArray);
+    const uniqueArrayDate = [...new Set(uniqueArray)];
+    console.log("uniqueArrayDate", uniqueArrayDate);
     const sortedUniqueReportsObjet = new Set(uniqueArray);
     const sortedUniqueReports = [...sortedUniqueReportsObjet];
+    console.log("sortedUniqueReports", sortedUniqueReports);
     const filterReports = sortedReports.filter(function (sortedReport) {
       // return sortedReport.rdvDate.slice(0,10) === choiceDate;
       return choiceDate.includes(sortedReport.rdvDate.slice(0,10)) ;
