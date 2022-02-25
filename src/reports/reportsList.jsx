@@ -215,6 +215,7 @@ fireSweetAlert = (id) => {
                ))}
                <option value={sortedUniqueDates}>All</option>
               </select>
+              <button className="btn btn-secondary mx-3">{filterReports.length}</button>
               <select className="form-select text-center" name="choiceTypeIRM" id="choiceTypeIRM" 
              onChange={this.handleChangeTypeIRM}  style={{width: "200px"}}>
                <option value={examenIRMS}>All</option>
