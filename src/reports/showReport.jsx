@@ -207,48 +207,44 @@ class ShowReport extends Component {
 
             <div className="row">
               <div className="mx-auto px-3 col-sm-8">
+
             <h4>Patient(e) {currentReport.nom} {currentReport.prenom}</h4>
-            <div className="py-3"  id="copyArea">
-                <div className={styles.text_cr}>
-                  <h1 className={styles.text_cr}>{currentReport.titre}</h1>
-                  <pre className="m-0">
-                    <p id="indicationArea" className={`${styles.text_cr} ${styles.box} m-0`}>{currentReport.indication}</p>
-                  </pre>
-                  <div className={`${styles.tooltip} d-flex justify-content-end p-3`}>
-                      <button onClick={() => {this.copyDivToClipboard("indicationArea","myBtn1")}}>
-                      <span className={`${styles.tooltiptext}`} id="myBtn1">copied</span>
-                      <FontAwesomeIcon icon={faCopy} size="xs"/></button>
-                  </div>
-                </div>
-                <br></br>
-                <div>
-                  <h3 className={styles.text_cr}>technique:</h3>
-                  <p id="protocoleArea" className={`${styles.text_cr} ${styles.box} m-0`}>{currentReport.protocole}</p>
-                  <div className={`${styles.tooltip} d-flex justify-content-end p-3`}>
-                      <button onClick={() => {this.copyDivToClipboard("protocoleArea","myBtn2")}}>
-                      <span className={`${styles.tooltiptext}`} id="myBtn2">copied</span>
-                      <FontAwesomeIcon icon={faCopy} size="xs"/></button>
-                  </div>
-                </div>
-                <br></br>
-                <div>
-                  <h3 className={styles.text_cr}>résultat:</h3>
-                  <pre className="m-0">
-                    <p id="contenuArea" className={`${styles.text_cr} ${styles.box} m-0`}>{currentReport.contenu}</p>
-                  </pre>
-                  <div className={`${styles.tooltip} d-flex justify-content-end p-3`}>
-                    
-                      <button onClick={() => {this.copyDivToClipboard("contenuArea","myBtn3")}}>
-                        <span className={`${styles.tooltiptext}`} id="myBtn3">copied</span>
-                        <FontAwesomeIcon icon={faCopy} size="xs"/>
-                      </button>
-                  </div>
-                 
-                 <br></br>
-                </div>
-                <div>
-                  <h3>Conclusion:</h3>
-                </div>
+            <br></br>
+
+              <div className="d-flex justify-content-center align-items-center">
+              <button type="button" className="btn btn-warning m-2" onClick={() => {this.copyDivToClipboard("indicationArea","myBtn1")}}>ind</button>
+              <div className={`${styles.tooltip}`}>
+              <span className={`${styles.tooltiptext}`} id="myBtn1">copied</span>
+              </div>
+              <button type="button" className="btn btn-primary m-2" onClick={() => {this.copyDivToClipboard("protocoleArea","myBtn2")}}>tech</button>
+              <div className={`${styles.tooltip}`}>
+              <span className={`${styles.tooltiptext}`} id="myBtn2">copied</span>
+              </div>
+              <button type="button" className="btn btn-info m-2" onClick={() => {this.copyDivToClipboard("contenuArea","myBtn3")}}>rslt</button>
+              <div className={`${styles.tooltip}`}>
+              <span className={`${styles.tooltiptext}`} id="myBtn3">copied</span>
+              </div>
+              <button type="button" className="btn btn-success m-2" onClick={() => {this.copyDivToClipboard("copyArea","myBtn4")}}>All</button>
+              <div className={`${styles.tooltip}`}>
+              <span className={`${styles.tooltiptext}`} id="myBtn4">copied</span>
+              </div>
+              </div>
+
+              <div className={`${styles.text_cr} py-3`}  id="copyArea">
+               
+              <h1 className={styles.titre_cr}>{currentReport.titre}:</h1>
+                  <p id="indicationArea" className={`${styles.text_cr}  mb-4`}>{currentReport.indication}</p>
+                  <br></br>
+
+                  <h3 className={styles.titre_cr}>technique:</h3>
+                  <p id="protocoleArea" className={`${styles.text_cr} mb-4`}>{currentReport.protocole}</p>
+                  <br></br>
+
+                  <h3 className={styles.titre_cr}>résultat:</h3>
+                  <p id="contenuArea" className={`${styles.text_cr} mb-4`}>{currentReport.contenu}</p>
+                  <br></br>
+
+                  <h3 className={styles.titre_conclusion}>Conclusion:</h3>
                 
             </div>  
             {/* fin de la zone à copier */}

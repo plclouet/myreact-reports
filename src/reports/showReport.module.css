@@ -10,12 +10,27 @@
 
  
 
-  .titre_cr{
+  h1.titre_cr{
+    font-weight: bold;
+    font-size:18px;
+    text-decoration: underline;
+    text-transform: uppercase;
+  }
+
+  h3.titre_cr{
+    font-size:16px;
+   font-style:italic;
+   font-weight: bold;
+  }
+
+  h3.titre_conclusion{
+    font-size:16px;
     font-weight: bold;
   }
 
   .text_cr{
-    font-family: arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size:16px;
   }
 
   
@@ -28,14 +43,7 @@
     display:flex;
     justify-content: center;
   }
-  /* .copyText span {
-    padding:10px;
-    font-size:18px;
-    color:#555;
-    border:none;
-    outline:none;
-    padding-right:50px;
-  } */
+ 
 
   .tooltip{
     position: relative;
@@ -104,12 +112,6 @@
   cursor:pointer;
   } 
 
-
-
-/*   .copyText button:active {
-    background:#e7380c;
-
-  } */
   .copyText button:hover {
     background:#636466;
 
