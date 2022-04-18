@@ -231,7 +231,7 @@ class ShowReport extends Component {
               </div>
 
               <div className={`${styles.text_cr} py-3`}  id="copyArea">
-               
+                  
                   <h1 className={styles.titre_cr}>{currentReport.titre}:</h1>
                   <pre>
                   <p id="indicationArea" className={`${styles.text_cr}  mb-4`}>{currentReport.indication}</p>
@@ -241,7 +241,7 @@ class ShowReport extends Component {
                   <h3 className={styles.titre_cr}>technique:</h3>
                   <pre>
                   <p id="protocoleArea" className={`${styles.text_cr} mb-4`}>{currentReport.protocole}</p>
-                  {/* <br></br> */}
+                  <br></br>
                   </pre>
 
                   <h3 className={styles.titre_cr}>résultat:</h3>
