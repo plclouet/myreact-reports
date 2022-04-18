@@ -241,7 +241,7 @@ class ShowReport extends Component {
                   <h3 className={styles.titre_cr}>technique:</h3>
                   <pre>
                   <p id="protocoleArea" className={`${styles.text_cr} mb-4`}>{currentReport.protocole}</p>
-                  <br></br>
+                  {/* <br></br> */}
                   </pre>
 
                   <h3 className={styles.titre_cr}>résultat:</h3>
