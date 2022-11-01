@@ -68,3 +68,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### dossier origine
+le dossier est enregistré dans OneDrive sous le nom de myreact-reports-dist-github
+C:\Users\plclo\OneDrive\Documents\react_strapi_app_compte_rendu_radio_aout_2021\CR RADIO frontend

@@ -187,6 +187,25 @@ class ShowReport extends Component {
       
 }
 
+//nouvelle fonction pour copier
+copyToClip()  {
+  let str = document.getElementById('copyArea').innerHTML;
+  str = str.replace(/\n/g, "<br>"); // or \r\n
+  function listener(e) {
+    e.clipboardData.setData("text/html", str);
+    e.clipboardData.setData("text/plain", str);
+    e.preventDefault();
+  }
+  document.addEventListener("copy", listener);
+  document.execCommand("copy");
+  document.removeEventListener("copy", listener);
+  // console.log('Copy Success!');
+  // alert("paragraphes copiés");
+  var tooltip = document.getElementById("myBtn4");
+  tooltip.style.visibility = "visible";
+  setTimeout(function(){ tooltip.style.visibility = "hidden";}, 1000);
+};
+
   render() {
     const { redirect, currentReport } = this.state;
     const str=currentReport.rdvDate;
@@ -224,28 +243,35 @@ class ShowReport extends Component {
               <div className={`${styles.tooltip}`}>
               <span className={`${styles.tooltiptext}`} id="myBtn3">copied</span>
               </div>
-              <button type="button" className="btn btn-success m-2" onClick={() => {this.copyDivToClipboard("copyArea","myBtn4")}}>All</button>
+              {/* <button type="button" className="btn btn-success m-2" onClick={() => {this.copyDivToClipboard("copyArea","myBtn4")}}>All</button> */}
+              <button type="button" className="btn btn-success m-2" onClick={() => {this.copyToClip()}}>All</button>
               <div className={`${styles.tooltip}`}>
               <span className={`${styles.tooltiptext}`} id="myBtn4">copied</span>
               </div>
               </div>
 
               <div className={`${styles.text_cr} py-3`}  id="copyArea">
-               
-              <h1 className={styles.titre_cr}>{currentReport.titre}:</h1>
+                 
+                  <h1 className={styles.titre_cr}>{currentReport.titre.toUpperCase()}:</h1>
+                  {/* <pre> */}
                   <p id="indicationArea" className={`${styles.text_cr}  mb-4`}>{currentReport.indication}</p>
+                  {/* </pre> */}
                   <br></br>
 
                   <h3 className={styles.titre_cr}>technique:</h3>
+                  <pre>
                   <p id="protocoleArea" className={`${styles.text_cr} mb-4`}>{currentReport.protocole}</p>
+                  </pre>
                   <br></br>
 
                   <h3 className={styles.titre_cr}>résultat:</h3>
+                  {/* <pre> */}
                   <p id="contenuArea" className={`${styles.text_cr} mb-4`}>{currentReport.contenu}</p>
+                  {/* </pre> */}
                   <br></br>
 
                   <h3 className={styles.titre_conclusion}>Conclusion:</h3>
-                
+                  
             </div>  
             {/* fin de la zone à copier */}
 
